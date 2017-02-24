@@ -1,6 +1,8 @@
 package com.bquiet.bquiet.manager;
 
 import android.media.MediaRecorder;
+import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.util.Log;
 
 import java.io.IOException;
@@ -52,5 +54,30 @@ public class RecorderManager {
             return (mRecorder.getMaxAmplitude());
         else
             return 0;
+    }
+
+
+    public class Ear extends AsyncTask<Void, Double, Void> {
+
+        public void onPreExecute() {
+            start();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            while(listening) {
+                SystemClock.sleep(300);
+                Double amplitude = 20 * Math.log10(getAmplitude() / 32768.0);
+                double newAmplitude = 100 + amplitude;
+                Log.d("amplitude", "" + amplitude + "-" + newAmplitude);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            stop();
+        }
+
     }
 }
