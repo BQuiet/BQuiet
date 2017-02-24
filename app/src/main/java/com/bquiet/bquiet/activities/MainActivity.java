@@ -18,10 +18,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        super.onResume();
+
         RecorderManager.Ear ear = recorderManager.new Ear();
         recorderManager.setListening(true);
-        ear.onPreExecute();
-        ear.doInBackground();
-        super.onResume();
+        ear.execute();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        recorderManager.stop();
     }
 }

@@ -2,6 +2,7 @@ package com.bquiet.bquiet.manager;
 
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 
@@ -64,14 +65,25 @@ public class RecorderManager {
         }
 
         @Override
-        public Void doInBackground(Void... arg0) {
+        protected Void doInBackground(Void... arg0) {
             while(listening) {
                 SystemClock.sleep(300);
+                if(Looper.myLooper() == Looper.getMainLooper()){
+                    System.exit(0);
+                }
                 Double amplitude = 20 * Math.log10(getAmplitude() / 32768.0);
                 double newAmplitude = 100 + amplitude;
-                Log.d("amplitude", "" + amplitude + "-" + newAmplitude);
+                publishProgress( amplitude );
             }
             return null;
+        }
+
+
+        @Override
+        protected void onProgressUpdate(Double... values) {
+
+            Log.d("amplitude", "" + values[0]); // + "-" + newAmplitude);
+
         }
 
         @Override
