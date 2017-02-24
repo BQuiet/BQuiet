@@ -6,7 +6,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 
-import com.bquiet.bquiet.MainActivity;
 import com.bquiet.bquiet.R;
 
 import java.util.Timer;

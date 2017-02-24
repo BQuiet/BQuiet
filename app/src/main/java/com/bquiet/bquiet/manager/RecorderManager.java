@@ -64,7 +64,7 @@ public class RecorderManager {
         }
 
         @Override
-        protected Void doInBackground(Void... arg0) {
+        public Void doInBackground(Void... arg0) {
             while(listening) {
                 SystemClock.sleep(300);
                 Double amplitude = 20 * Math.log10(getAmplitude() / 32768.0);
