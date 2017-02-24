@@ -72,8 +72,8 @@ public class RecorderManager {
                     System.exit(0);
                 }
                 Double amplitude = 20 * Math.log10(getAmplitude() / 32768.0);
-                double newAmplitude = 100 + amplitude;
-                publishProgress( amplitude );
+                double newAmplitude = 90+ amplitude;
+                publishProgress( amplitude, newAmplitude );
             }
             return null;
         }
@@ -82,7 +82,7 @@ public class RecorderManager {
         @Override
         protected void onProgressUpdate(Double... values) {
 
-            Log.d("amplitude", "" + values[0]); // + "-" + newAmplitude);
+            Log.d("amplitude", "" + values[0] + " --- " + values[1]);
 
         }
 
