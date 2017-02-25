@@ -11,6 +11,7 @@ import java.io.IOException;
 public class RecorderManager {
     private MediaRecorder mRecorder;
 
+
     public boolean isListening() {
         return listening;
     }
@@ -56,9 +57,14 @@ public class RecorderManager {
         else
             return 0;
     }
-
+    public interface EarListener{
+        void newValueFromEar(double spl);
+    }
 
     public class Ear extends AsyncTask<Void, Double, Void> {
+        private double spl;
+        private EarListener listener;
+
 
         public void onPreExecute() {
             start();
@@ -72,7 +78,11 @@ public class RecorderManager {
                     System.exit(0);
                 }
                 Double amplitude = 20 * Math.log10(getAmplitude() / 32768.0);
+<<<<<<< HEAD
                 double newAmplitude = 90+ amplitude;
+=======
+                double newAmplitude = 100 + amplitude;
+>>>>>>> feature/add_speed_do_metter
                 publishProgress( amplitude, newAmplitude );
             }
             return null;
@@ -82,8 +92,15 @@ public class RecorderManager {
         @Override
         protected void onProgressUpdate(Double... values) {
 
+<<<<<<< HEAD
             Log.d("amplitude", "" + values[0] + " --- " + values[1]);
 
+=======
+            Log.d("amplitude", "" + values[1]); // + "-" + newAmplitude);
+            if (listener!=null){
+                listener.newValueFromEar(values[1]);
+            }
+>>>>>>> feature/add_speed_do_metter
         }
 
         @Override
@@ -91,5 +108,18 @@ public class RecorderManager {
             stop();
         }
 
+        public double getSpl() {
+            return spl;
+        }
+
+        public void setSpl(double spl) {
+            this.spl = spl;
+        }
+
+        public void setOnEarListener(EarListener earListener){
+            this.listener=earListener;
+        }
     }
+
+
 }
