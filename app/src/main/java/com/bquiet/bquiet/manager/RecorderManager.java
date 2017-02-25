@@ -78,11 +78,7 @@ public class RecorderManager {
                     System.exit(0);
                 }
                 Double amplitude = 20 * Math.log10(getAmplitude() / 32768.0);
-<<<<<<< HEAD
                 double newAmplitude = 90+ amplitude;
-=======
-                double newAmplitude = 100 + amplitude;
->>>>>>> feature/add_speed_do_metter
                 publishProgress( amplitude, newAmplitude );
             }
             return null;
@@ -92,15 +88,12 @@ public class RecorderManager {
         @Override
         protected void onProgressUpdate(Double... values) {
 
-<<<<<<< HEAD
             Log.d("amplitude", "" + values[0] + " --- " + values[1]);
 
-=======
             Log.d("amplitude", "" + values[1]); // + "-" + newAmplitude);
             if (listener!=null){
                 listener.newValueFromEar(values[1]);
             }
->>>>>>> feature/add_speed_do_metter
         }
 
         @Override
