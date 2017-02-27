@@ -1,0 +1,58 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.bquiet.bquiet.fragments.MainFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/fragment_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.github.anastr.speedviewlib.SpeedView
+                android:layout_margin="20dp"
+                android:id="@+id/speedView"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                app:maxSpeed="100"
+                app:minSpeed="0"
+                app:speedTextFormat="INTEGER"
+                app:unit="dB"
+                app:speedTextPosition="BOTTOM_CENTER"/>
+
+            <!--<com.github.anastr.speedviewlib.AwesomeSpeedometer
+                android:id="@+id/awesomeSpeedometer"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content" />-->
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageButton
+            android:id="@+id/fragment_play_button"
+            android:background="@drawable/button_play"
+            android:layout_width="@dimen/button_play_pause_size"
+            android:layout_height="@dimen/button_play_pause_size"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/fragment_pause_button"/>
+
+        <ImageButton
+            android:id="@+id/fragment_pause_button"
+            android:background="@drawable/button_pause"
+            android:layout_width="@dimen/button_play_pause_size"
+            android:layout_height="@dimen/button_play_pause_size"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+
+</FrameLayout>
