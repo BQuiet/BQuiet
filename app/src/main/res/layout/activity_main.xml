@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main_layout"
+    android:id="@+id/activity_main_tabhost"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@drawable/teacher_low_noise"
 
     tools:context="com.bquiet.bquiet.activities.MainActivity">
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_main__tabcontent">
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -58,6 +61,6 @@
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
+    </FrameLayout>
 
-
-</LinearLayout>
+</android.support.v4.app.FragmentTabHost>
