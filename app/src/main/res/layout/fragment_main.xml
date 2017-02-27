@@ -43,7 +43,8 @@
             android:layout_width="@dimen/button_play_pause_size"
             android:layout_height="@dimen/button_play_pause_size"
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/fragment_pause_button"/>
+            android:layout_alignParentRight="true"
+            />
 
         <ImageButton
             android:id="@+id/fragment_pause_button"
@@ -51,7 +52,8 @@
             android:layout_width="@dimen/button_play_pause_size"
             android:layout_height="@dimen/button_play_pause_size"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            />
     </RelativeLayout>
 
 

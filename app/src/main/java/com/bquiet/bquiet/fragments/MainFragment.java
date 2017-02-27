@@ -13,6 +13,8 @@ import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
 import com.github.anastr.speedviewlib.Speedometer;
 
+import static android.view.View.GONE;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -53,6 +55,9 @@ public class MainFragment extends Fragment {
 
         speedometer.setWithTremble(speedometreWithTremble);
 
+        playButton.setVisibility(View.VISIBLE);
+        pauseButton.setVisibility(GONE);
+
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,8 +74,11 @@ public class MainFragment extends Fragment {
                 recorderManager.setListening(true);
                 //ear.cancel(recorderManager.isListening());
                 ear.execute();
-                playButton.setSelected(true);
-                pauseButton.setSelected(false);
+
+                playButton.setPressed(true);
+                playButton.setVisibility(GONE);
+                pauseButton.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -81,8 +89,10 @@ public class MainFragment extends Fragment {
                 speedometer.speedTo(0.0f);
                 recorderManager.stopMediaRecorder();
                 ear.cancel(recorderManager.isListening());
-                pauseButton.setSelected(true);
-                playButton.setSelected(false);
+
+                pauseButton.setPressed(true);
+                playButton.setVisibility(View.VISIBLE);
+                pauseButton.setVisibility(GONE);
             }
         });
 
