@@ -69,6 +69,8 @@ public class MainFragment extends Fragment {
                 recorderManager.setListening(true);
                 //ear.cancel(recorderManager.isListening());
                 ear.execute();
+                playButton.setSelected(true);
+                pauseButton.setSelected(false);
             }
         });
 
@@ -79,6 +81,8 @@ public class MainFragment extends Fragment {
                 speedometer.speedTo(0.0f);
                 recorderManager.stopMediaRecorder();
                 ear.cancel(recorderManager.isListening());
+                pauseButton.setSelected(true);
+                playButton.setSelected(false);
             }
         });
 
