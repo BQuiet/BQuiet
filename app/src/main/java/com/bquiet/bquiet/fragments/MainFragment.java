@@ -1,6 +1,8 @@
 package com.bquiet.bquiet.fragments;
 
 
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.bquiet.bquiet.R;
+import com.bquiet.bquiet.activities.MainActivity;
 import com.bquiet.bquiet.manager.RecorderManager;
 import com.github.anastr.speedviewlib.Speedometer;
 
@@ -33,8 +36,10 @@ public class MainFragment extends Fragment {
 
     private boolean speedometreWithTremble = false;
 
+
     RecorderManager recorderManager;
     RecorderManager.Ear ear;
+    MediaPlayer mp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,7 @@ public class MainFragment extends Fragment {
                         speedometer.speedTo((float) spl);
                         changeBackgroundImage((float) spl);
                         //speedometer2.speedTo((float) spl);
+                        //soundAlarm(getContext());
                     }
                 });
                 recorderManager.setListening(true);
@@ -100,12 +106,19 @@ public class MainFragment extends Fragment {
     }
 
     private void changeBackgroundImage(float noiseLevel) {
-        if(noiseLevel < MEDIUM_NOISE) {
+        if (noiseLevel < MEDIUM_NOISE) {
             layout.setBackgroundResource(R.drawable.teacher_low_noise);
-        } else if(noiseLevel > MEDIUM_NOISE && noiseLevel < HIGH_NOISE) {
+        } else if (noiseLevel > MEDIUM_NOISE && noiseLevel < HIGH_NOISE) {
             layout.setBackgroundResource(R.drawable.teacher_medium_noise);
-        } else if(noiseLevel > HIGH_NOISE) {
+        } else if (noiseLevel > HIGH_NOISE) {
             layout.setBackgroundResource(R.drawable.teacher_high_noise);
+            mp.start();
         }
     }
+
+    /*private void soundAlarm(Context context){
+            mp = MediaPlayer.create(context, R.raw.alarm);
+        }
+
+    }*/
 }
