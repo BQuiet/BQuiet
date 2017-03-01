@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bquiet.bquiet.R;
@@ -110,13 +109,13 @@ public class MainFragment extends Fragment {
 
     private void changeBackgroundImage(float noiseLevel) {
         if (noiseLevel < MEDIUM_NOISE) {
-            layout.setBackgroundResource(R.drawable.teacher_low_noise);
+            layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
         } else if (noiseLevel > MEDIUM_NOISE && noiseLevel < HIGH_NOISE) {
-            layout.setBackgroundResource(R.drawable.teacher_medium_noise);
+            layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
         } else if (noiseLevel > HIGH_NOISE) {
-            layout.setBackgroundResource(R.drawable.teacher_high_noise);
+            layout.setBackgroundResource(R.color.colorHighNoise);
             soundAlarm(getContext());
         }
     }
