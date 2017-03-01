@@ -33,7 +33,7 @@ public class MainFragment extends Fragment {
     private Speedometer speedometer;
     private Speedometer speedometer2;
     private Speedometer speedometer3;
-
+    private Speedometer speedometer4;
 
     private ImageButton playButton;
     private ImageButton pauseButton;
@@ -49,6 +49,7 @@ public class MainFragment extends Fragment {
     RecorderManager.Ear ear;
     MediaPlayer mp;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +63,7 @@ public class MainFragment extends Fragment {
         speedometer = (Speedometer) v.findViewById(R.id.speedView);
         speedometer2 = (Speedometer) v.findViewById(R.id.awesomeSpeedometer);
         speedometer3 = (Speedometer) v.findViewById(R.id.tubeSpeedometer);
+        speedometer4 = (Speedometer) v.findViewById(R.id.deluxeSpeedView);
         playButton = (ImageButton) v.findViewById(R.id.fragment_play_button);
         pauseButton = (ImageButton) v.findViewById(R.id.fragment_pause_button);
         layout = (RelativeLayout) v.findViewById(R.id.fragment_relativeLayout);
@@ -77,8 +79,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-        scrollView.setInAnimation(slide_in_left);
-        scrollView.setOutAnimation(slide_out_right);
 
         speedometer.setWithTremble(speedometreWithTremble);
         speedometer.setLowSpeedPercent(LOW_NOISE);
@@ -103,6 +103,8 @@ public class MainFragment extends Fragment {
                         changeBackgroundImage((float) spl);
                         speedometer2.speedTo((float) spl);
                         dB.setText("" + speedometer.getSpeed());
+                        speedometer3.speedTo((float) spl);
+                        speedometer4.speedTo((float) spl);
                     }
                 });
                 recorderManager.setListening(true);

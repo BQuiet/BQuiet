@@ -103,6 +103,18 @@
                     app:unit="dB"
                     app:endDegree="360"
                     app:startDegree="180"/>
+
+                <com.github.anastr.speedviewlib.DeluxeSpeedView
+                    android:id="@+id/deluxeSpeedView"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    app:maxSpeed="100"
+                    app:minSpeed="0"
+                    app:speedTextFormat="INTEGER"
+                    app:unit="dB"
+                    app:endDegree="360"
+                    app:startDegree="180"/>
             </ViewFlipper>
 
         </LinearLayout>
