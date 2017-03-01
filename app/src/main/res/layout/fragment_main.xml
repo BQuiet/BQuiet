@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.bquiet.bquiet.fragments.MainFragment">
+    tools:context="com.bquiet.bquiet.fragments.MainFragment"
+    android:layout_marginTop="40dp">
 
     <RelativeLayout
         android:id="@+id/fragment_relativeLayout"
@@ -46,7 +47,7 @@
                 app:minSpeed="0"
                 app:speedTextFormat="INTEGER"
                 app:unit="dB"
-                app:speedTextPosition="BOTTOM_CENTER"/>
+                app:speedTextPosition="BOTTOM_CENTER" />
 
             <!--<com.github.anastr.speedviewlib.AwesomeSpeedometer
                 android:id="@+id/awesomeSpeedometer"
