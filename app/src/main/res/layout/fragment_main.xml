@@ -5,6 +5,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.bquiet.bquiet.fragments.MainFragment">
 
+    <RelativeLayout
+        android:id="@+id/fragment_relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageButton
+            android:id="@+id/fragment_play_button"
+            android:background="@drawable/button_play"
+            android:layout_width="@dimen/button_play_pause_size"
+            android:layout_height="@dimen/button_play_pause_size"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
+
+        <ImageButton
+            android:id="@+id/fragment_pause_button"
+            android:background="@drawable/button_pause"
+            android:layout_width="@dimen/button_play_pause_size"
+            android:layout_height="@dimen/button_play_pause_size"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
     <!-- TODO: Update blank fragment layout -->
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -33,28 +57,7 @@
 
     </HorizontalScrollView>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-        <ImageButton
-            android:id="@+id/fragment_play_button"
-            android:background="@drawable/button_play"
-            android:layout_width="@dimen/button_play_pause_size"
-            android:layout_height="@dimen/button_play_pause_size"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            />
 
-        <ImageButton
-            android:id="@+id/fragment_pause_button"
-            android:background="@drawable/button_pause"
-            android:layout_width="@dimen/button_play_pause_size"
-            android:layout_height="@dimen/button_play_pause_size"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            />
-    </RelativeLayout>
 
 
 </FrameLayout>

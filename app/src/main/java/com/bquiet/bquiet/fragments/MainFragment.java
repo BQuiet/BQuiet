@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
@@ -31,7 +32,7 @@ public class MainFragment extends Fragment {
 
     private ImageButton playButton;
     private ImageButton pauseButton;
-    private LinearLayout layout;
+    private RelativeLayout layout;
 
     private boolean speedometreWithTremble = false;
 
@@ -55,7 +56,7 @@ public class MainFragment extends Fragment {
         //speedometer2 = (Speedometer) v.findViewById(R.id.awesomeSpeedometer);
         playButton = (ImageButton) v.findViewById(R.id.fragment_play_button);
         pauseButton = (ImageButton) v.findViewById(R.id.fragment_pause_button);
-        layout = (LinearLayout) v.findViewById(R.id.fragment_layout);
+        layout = (RelativeLayout) v.findViewById(R.id.fragment_relativeLayout);
 
         speedometer.setWithTremble(speedometreWithTremble);
 
