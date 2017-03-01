@@ -5,7 +5,9 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -13,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewAnimator;
-import android.widget.ViewSwitcher;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
@@ -71,22 +72,53 @@ public class MainFragment extends Fragment {
         dB = (TextView) v.findViewById(R.id.fragment_db_text_view);
         scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
-        scrollView.setOnClickListener(new View.OnClickListener() {
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-                scrollView.setInAnimation(view.getContext(), R.anim.fadein);
-                scrollView.showNext();
-            }
-        });
+            public boolean onTouch(View v, MotionEvent event) {
 
-        scrollView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                scrollView.setInAnimation(view.getContext(), R.anim.fadein);
-                scrollView.showPrevious();
+                int accion = event.getAction();
+                int X = (int)event.getX();
+                int Y = (int)event.getY();
+                switch (accion)
+                {
+                    case MotionEvent.ACTION_DOWN:   // Pulsar pantalla
+                        // acciones
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:   // Arrastrar dedo
+
+                        if (event.getY() >= v.getHeight()/2) {
+                            scrollView.setInAnimation(v.getContext(), R.anim.fadein);
+                            scrollView.showPrevious();
+                            Log.d("yyyyyyyy", ""+event.getY());
+                        }
+
+                        break;
+
+                    case MotionEvent.ACTION_UP:     // Levantar el dedo de la pantalla
+                        // acciones
+                        break;
+                }
                 return true;
             }
         });
+
+//        scrollView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                scrollView.setInAnimation(view.getContext(), R.anim.fadein);
+//                scrollView.showNext();
+//            }
+//        });
+//
+//        scrollView.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
+//                scrollView.setInAnimation(view.getContext(), R.anim.fadein);
+//                scrollView.showPrevious();
+//                return true;
+//            }
+//        });
 
 
         speedometer.setWithTremble(speedometreWithTremble);
