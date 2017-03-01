@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
@@ -32,6 +33,8 @@ public class MainFragment extends Fragment {
     private ImageButton playButton;
     private ImageButton pauseButton;
     private RelativeLayout layout;
+    private TextView dB;
+    private TextView state;
 
     private boolean speedometreWithTremble = false;
 
@@ -55,6 +58,8 @@ public class MainFragment extends Fragment {
         playButton = (ImageButton) v.findViewById(R.id.fragment_play_button);
         pauseButton = (ImageButton) v.findViewById(R.id.fragment_pause_button);
         layout = (RelativeLayout) v.findViewById(R.id.fragment_relativeLayout);
+        state = (TextView) v.findViewById(R.id.fragment_state_text_view);
+        dB = (TextView) v.findViewById(R.id.fragment_db_text_view);
 
         speedometer.setWithTremble(speedometreWithTremble);
         speedometer.setLowSpeedPercent(LOW_NOISE);
@@ -62,6 +67,8 @@ public class MainFragment extends Fragment {
 
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(GONE);
+
+
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +81,7 @@ public class MainFragment extends Fragment {
                         speedometer.speedTo((float) spl);
                         changeBackgroundImage((float) spl);
                         //speedometer2.speedTo((float) spl);
-
+                        dB.setText("" + speedometer.getSpeed());
                     }
                 });
                 recorderManager.setListening(true);
@@ -109,12 +116,17 @@ public class MainFragment extends Fragment {
         if (noiseLevel < LOW_NOISE) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
+            state.setText(R.string.low_state);
         } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
+            state.setText(R.string.normal_state);
+
         } else if (noiseLevel > MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             soundAlarm(getContext());
+            state.setText(R.string.state_high);
+
         }
     }
 

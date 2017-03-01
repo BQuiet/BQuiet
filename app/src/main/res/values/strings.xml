@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="low_state">Bajo</string>
+    <string name="normal_state">Normal</string>
+    <string name="state_high">Alto</string>
 </resources>
