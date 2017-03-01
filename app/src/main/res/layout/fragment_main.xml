@@ -58,18 +58,21 @@
     </RelativeLayout>
 
     <!-- TODO: Update blank fragment layout -->
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/fragment_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ViewSwitcher
+                android:id="@+id/scroll"
+                android:layout_width="300dp"
+                android:layout_height="match_parent">
             <com.github.anastr.speedviewlib.SpeedView
 
                 android:id="@+id/speedView"
                 android:layout_width="300dp"
-                android:layout_height="match_parent"
+                android:layout_height="300dp"
                 android:padding="30dp"
                 app:maxSpeed="100"
                 app:minSpeed="0"
@@ -77,14 +80,21 @@
                 app:unit="dB"
                 app:endDegree="360"
                 app:startDegree="180" />
-<!--<com.github.anastr.speedviewlib.AwesomeSpeedometer
+            <com.github.anastr.speedviewlib.AwesomeSpeedometer
                 android:id="@+id/awesomeSpeedometer"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content" />-->
+                android:layout_height="300dp"
+                android:padding="30dp"
+                app:maxSpeed="100"
+                app:minSpeed="0"
+                app:speedTextFormat="INTEGER"
+                app:unit="dB"
+                app:endDegree="360"
+                app:startDegree="180"/>
+            </ViewSwitcher>
 
         </LinearLayout>
 
-    </HorizontalScrollView>
 
 
 

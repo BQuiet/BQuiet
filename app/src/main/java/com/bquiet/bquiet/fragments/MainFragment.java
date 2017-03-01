@@ -8,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
@@ -35,10 +37,11 @@ public class MainFragment extends Fragment {
     private RelativeLayout layout;
     private TextView dB;
     private TextView state;
+    private ViewSwitcher scrollView;
 
     private boolean speedometreWithTremble = false;
 
-
+    Animation slide_in_left, slide_out_right;
     RecorderManager recorderManager;
     RecorderManager.Ear ear;
     MediaPlayer mp;
@@ -54,12 +57,23 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         speedometer = (Speedometer) v.findViewById(R.id.speedView);
-        //speedometer2 = (Speedometer) v.findViewById(R.id.awesomeSpeedometer);
+        speedometer2 = (Speedometer) v.findViewById(R.id.awesomeSpeedometer);
         playButton = (ImageButton) v.findViewById(R.id.fragment_play_button);
         pauseButton = (ImageButton) v.findViewById(R.id.fragment_pause_button);
         layout = (RelativeLayout) v.findViewById(R.id.fragment_relativeLayout);
         state = (TextView) v.findViewById(R.id.fragment_state_text_view);
         dB = (TextView) v.findViewById(R.id.fragment_db_text_view);
+        scrollView = (ViewSwitcher) v.findViewById(R.id.scroll);
+
+        speedometer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scrollView.showNext();
+            }
+        });
+
+        scrollView.setInAnimation(slide_in_left);
+        scrollView.setOutAnimation(slide_out_right);
 
         speedometer.setWithTremble(speedometreWithTremble);
         speedometer.setLowSpeedPercent(LOW_NOISE);
@@ -67,6 +81,8 @@ public class MainFragment extends Fragment {
 
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(GONE);
+
+
 
 
 
@@ -80,7 +96,7 @@ public class MainFragment extends Fragment {
                     public void newValueFromEar(double spl) {
                         speedometer.speedTo((float) spl);
                         changeBackgroundImage((float) spl);
-                        //speedometer2.speedTo((float) spl);
+                        speedometer2.speedTo((float) spl);
                         dB.setText("" + speedometer.getSpeed());
                     }
                 });
