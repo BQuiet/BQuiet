@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.bquiet.bquiet.fragments.MainFragment">
+    tools:context="com.bquiet.bquiet.fragments.MainFragment"
+    android:layout_marginTop="30dp"
+    >
 
     <RelativeLayout
         android:id="@+id/fragment_relativeLayout"
@@ -35,13 +37,15 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:id="@+id/fragment_layout"
+            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.github.anastr.speedviewlib.SpeedView
-                android:layout_margin="20dp"
+
                 android:id="@+id/speedView"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
+                android:padding="30dp"
                 app:maxSpeed="100"
                 app:minSpeed="0"
                 app:speedTextFormat="INTEGER"
