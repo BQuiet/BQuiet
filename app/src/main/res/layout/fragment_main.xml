@@ -49,9 +49,9 @@
                 app:minSpeed="0"
                 app:speedTextFormat="INTEGER"
                 app:unit="dB"
-                app:speedTextPosition="BOTTOM_CENTER" />
-
-            <!--<com.github.anastr.speedviewlib.AwesomeSpeedometer
+                app:endDegree="360"
+                app:startDegree="180" />
+<!--<com.github.anastr.speedviewlib.AwesomeSpeedometer
                 android:id="@+id/awesomeSpeedometer"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content" />-->

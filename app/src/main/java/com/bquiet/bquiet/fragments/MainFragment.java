@@ -22,8 +22,8 @@ import static android.view.View.GONE;
  */
 public class MainFragment extends Fragment {
 
-    public static final float HIGH_NOISE = 70;
-    public static final float MEDIUM_NOISE = 10;
+    public static final int MEDIUM_NOISE = 70;
+    public static final int LOW_NOISE = 10;
 
 
     private Speedometer speedometer;
@@ -57,10 +57,8 @@ public class MainFragment extends Fragment {
         layout = (RelativeLayout) v.findViewById(R.id.fragment_relativeLayout);
 
         speedometer.setWithTremble(speedometreWithTremble);
-
-        speedometer.setStartDegree(180);
-        speedometer.setEndDegree(360);
-
+        speedometer.setLowSpeedPercent(LOW_NOISE);
+        speedometer.setMediumSpeedPercent(MEDIUM_NOISE);
 
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(GONE);
@@ -108,13 +106,13 @@ public class MainFragment extends Fragment {
     }
 
     private void changeBackgroundImage(float noiseLevel) {
-        if (noiseLevel < MEDIUM_NOISE) {
+        if (noiseLevel < LOW_NOISE) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
-        } else if (noiseLevel > MEDIUM_NOISE && noiseLevel < HIGH_NOISE) {
+        } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
-        } else if (noiseLevel > HIGH_NOISE) {
+        } else if (noiseLevel > MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             soundAlarm(getContext());
         }
