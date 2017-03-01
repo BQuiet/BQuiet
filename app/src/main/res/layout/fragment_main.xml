@@ -64,10 +64,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <ViewSwitcher
+            <ViewFlipper
                 android:id="@+id/scroll"
                 android:layout_width="300dp"
-                android:layout_height="match_parent">
+                android:layout_height="300dp">
             <com.github.anastr.speedviewlib.SpeedView
 
                 android:id="@+id/speedView"
@@ -91,7 +91,12 @@
                 app:unit="dB"
                 app:endDegree="360"
                 app:startDegree="180"/>
-            </ViewSwitcher>
+
+                <com.github.anastr.speedviewlib.TubeSpeedometer
+                    android:id="@+id/tubeSpeedometer"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+            </ViewFlipper>
 
         </LinearLayout>
 

@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ViewAnimator;
 import android.widget.ViewSwitcher;
 
 import com.bquiet.bquiet.R;
@@ -31,13 +32,15 @@ public class MainFragment extends Fragment {
 
     private Speedometer speedometer;
     private Speedometer speedometer2;
+    private Speedometer speedometer3;
+
 
     private ImageButton playButton;
     private ImageButton pauseButton;
     private RelativeLayout layout;
     private TextView dB;
     private TextView state;
-    private ViewSwitcher scrollView;
+    private ViewAnimator scrollView;
 
     private boolean speedometreWithTremble = false;
 
@@ -58,16 +61,17 @@ public class MainFragment extends Fragment {
 
         speedometer = (Speedometer) v.findViewById(R.id.speedView);
         speedometer2 = (Speedometer) v.findViewById(R.id.awesomeSpeedometer);
+        speedometer3 = (Speedometer) v.findViewById(R.id.tubeSpeedometer);
         playButton = (ImageButton) v.findViewById(R.id.fragment_play_button);
         pauseButton = (ImageButton) v.findViewById(R.id.fragment_pause_button);
         layout = (RelativeLayout) v.findViewById(R.id.fragment_relativeLayout);
         state = (TextView) v.findViewById(R.id.fragment_state_text_view);
         dB = (TextView) v.findViewById(R.id.fragment_db_text_view);
-        scrollView = (ViewSwitcher) v.findViewById(R.id.scroll);
+        scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
-        speedometer.setOnClickListener(new View.OnClickListener() {
+        scrollView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 scrollView.showNext();
             }
         });
