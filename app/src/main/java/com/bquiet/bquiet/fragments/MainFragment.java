@@ -12,7 +12,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.bquiet.bquiet.R;
-import com.bquiet.bquiet.activities.MainActivity;
 import com.bquiet.bquiet.manager.RecorderManager;
 import com.github.anastr.speedviewlib.Speedometer;
 
@@ -23,8 +22,8 @@ import static android.view.View.GONE;
  */
 public class MainFragment extends Fragment {
 
-    public static final float HIGH_NOISE = 50;
-    public static final float MEDIUM_NOISE = 40;
+    public static final float HIGH_NOISE = 60;
+    public static final float MEDIUM_NOISE = 10;
 
 
     private Speedometer speedometer;
@@ -74,7 +73,7 @@ public class MainFragment extends Fragment {
                         speedometer.speedTo((float) spl);
                         changeBackgroundImage((float) spl);
                         //speedometer2.speedTo((float) spl);
-                        //soundAlarm(getContext());
+
                     }
                 });
                 recorderManager.setListening(true);
@@ -112,13 +111,13 @@ public class MainFragment extends Fragment {
             layout.setBackgroundResource(R.drawable.teacher_medium_noise);
         } else if (noiseLevel > HIGH_NOISE) {
             layout.setBackgroundResource(R.drawable.teacher_high_noise);
-            mp.start();
+            soundAlarm(getContext());
         }
     }
 
-    /*private void soundAlarm(Context context){
+    private void soundAlarm(Context context){
             mp = MediaPlayer.create(context, R.raw.alarm);
+            mp.start();
         }
 
-    }*/
-}
+    }
