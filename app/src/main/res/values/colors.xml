@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorLowNoise">#b2ff59</color>
+    <color name="colorMediumNoise">#ffff00</color>
+    <color name="colorHighNoise">#ff5252</color>
 </resources>
+
