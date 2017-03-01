@@ -72,6 +72,7 @@ public class MainFragment extends Fragment {
         scrollView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                scrollView.setInAnimation(view.getContext(), R.anim.fadein);
                 scrollView.showNext();
             }
         });
