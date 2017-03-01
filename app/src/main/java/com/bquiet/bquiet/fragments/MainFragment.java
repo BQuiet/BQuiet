@@ -79,6 +79,15 @@ public class MainFragment extends Fragment {
             }
         });
 
+        scrollView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                scrollView.setInAnimation(view.getContext(), R.anim.fadein);
+                scrollView.showPrevious();
+                return true;
+            }
+        });
+
 
         speedometer.setWithTremble(speedometreWithTremble);
         speedometer.setLowSpeedPercent(LOW_NOISE);
