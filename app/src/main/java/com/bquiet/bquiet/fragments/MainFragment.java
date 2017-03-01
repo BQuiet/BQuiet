@@ -22,7 +22,7 @@ import static android.view.View.GONE;
  */
 public class MainFragment extends Fragment {
 
-    public static final float HIGH_NOISE = 60;
+    public static final float HIGH_NOISE = 70;
     public static final float MEDIUM_NOISE = 10;
 
 
@@ -107,8 +107,10 @@ public class MainFragment extends Fragment {
     private void changeBackgroundImage(float noiseLevel) {
         if (noiseLevel < MEDIUM_NOISE) {
             layout.setBackgroundResource(R.drawable.teacher_low_noise);
+            stopAlarm();
         } else if (noiseLevel > MEDIUM_NOISE && noiseLevel < HIGH_NOISE) {
             layout.setBackgroundResource(R.drawable.teacher_medium_noise);
+            stopAlarm();
         } else if (noiseLevel > HIGH_NOISE) {
             layout.setBackgroundResource(R.drawable.teacher_high_noise);
             soundAlarm(getContext());
@@ -116,8 +118,20 @@ public class MainFragment extends Fragment {
     }
 
     private void soundAlarm(Context context){
-            mp = MediaPlayer.create(context, R.raw.alarm);
-            mp.start();
-        }
-
+        mp = MediaPlayer.create(context, R.raw.alarm);
+        mp.start();
     }
+
+    private void stopAlarm(){
+        if(mp !=null){
+            mp.release();
+            mp = null;
+        }
+    }
+
+}
+
+
+
+
+
