@@ -12,6 +12,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
+        <TextView
+            android:id="@+id/fragment_db_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="80dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            android:text="dB"
+            android:layout_alignParentRight="true"
+            />
+        <TextView
+            android:id="@+id/fragment_state_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            android:layout_marginRight="70dp"
+            android:layout_below="@id/fragment_db_text_view"
+            android:layout_alignParentRight="true"
+
+            />
         <ImageButton
             android:id="@+id/fragment_play_button"
             android:background="@drawable/button_play"
