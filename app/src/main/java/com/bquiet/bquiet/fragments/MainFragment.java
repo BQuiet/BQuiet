@@ -13,11 +13,12 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewAnimator;
-import android.widget.ViewSwitcher;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
 import com.github.anastr.speedviewlib.Speedometer;
+
+import java.util.Date;
 
 import static android.view.View.GONE;
 
@@ -26,8 +27,9 @@ import static android.view.View.GONE;
  */
 public class MainFragment extends Fragment {
 
-    public static final int MEDIUM_NOISE = 70;
-    public static final int LOW_NOISE = 10;
+    public static final int MEDIUM_NOISE = 80;
+    public static final int LOW_NOISE = 40;
+
 
 
     private Speedometer speedometer;
@@ -43,11 +45,16 @@ public class MainFragment extends Fragment {
     private ViewAnimator scrollView;
 
     private boolean speedometreWithTremble = false;
+    boolean started = false;
+    long myStartDate;
 
     Animation slide_in_left, slide_out_right;
     RecorderManager recorderManager;
     RecorderManager.Ear ear;
     MediaPlayer mp;
+
+
+
 
 
     @Override
@@ -139,6 +146,9 @@ public class MainFragment extends Fragment {
     }
 
     private void changeBackgroundImage(float noiseLevel) {
+
+        Date actualDate = new Date();
+
         if (noiseLevel < LOW_NOISE) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
@@ -146,13 +156,21 @@ public class MainFragment extends Fragment {
         } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
+            started = false;
             state.setText(R.string.normal_state);
 
         } else if (noiseLevel > MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorHighNoise);
-            soundAlarm(getContext());
             state.setText(R.string.state_high);
 
+            if (!started) {
+                myStartDate = actualDate.getTime();
+                started = true;
+            }else {
+                if ((actualDate.getTime() - myStartDate) > 2000 && 10000 > (actualDate.getTime() - myStartDate)) {
+                    soundAlarm(getContext());
+                }
+            }
         }
     }
 
