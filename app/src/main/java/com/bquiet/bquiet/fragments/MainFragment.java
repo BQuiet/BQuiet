@@ -102,9 +102,12 @@ public class MainFragment extends Fragment {
                         speedometer.speedTo((float) spl);
                         changeBackgroundImage((float) spl);
                         speedometer2.speedTo((float) spl);
-                        dB.setText("" + speedometer.getSpeed());
                         speedometer3.speedTo((float) spl);
                         speedometer4.speedTo((float) spl);
+
+                        float dBelios = speedometer.getSpeed();
+                        String realReader = String.format("%.0f dB", dBelios);
+                        dB.setText(realReader);
                     }
                 });
                 recorderManager.setListening(true);
