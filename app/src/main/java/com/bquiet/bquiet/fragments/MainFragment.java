@@ -16,9 +16,14 @@ import android.widget.ViewAnimator;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
+import com.bquiet.bquiet.model.Dates;
+import com.bquiet.bquiet.model.NoiseList;
 import com.github.anastr.speedviewlib.Speedometer;
 
 import java.util.Date;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 import static android.view.View.GONE;
 
@@ -60,7 +65,8 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
+
+        }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -153,15 +159,27 @@ public class MainFragment extends Fragment {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
             state.setText(R.string.low_state);
+
+            Realm realm = Realm.getDefaultInstance();
+            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
         } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
             started = false;
             state.setText(R.string.normal_state);
 
+            Realm realm = Realm.getDefaultInstance();
+            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+
         } else if (noiseLevel > MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             state.setText(R.string.state_high);
+
+            Realm realm = Realm.getDefaultInstance();
+            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
 
             if (!started) {
                 myStartDate = actualDate.getTime();

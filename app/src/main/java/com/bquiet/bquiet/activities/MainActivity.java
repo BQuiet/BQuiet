@@ -12,6 +12,8 @@ import com.bquiet.bquiet.fragments.MainFragment;
 import com.bquiet.bquiet.fragments.MyClassFragment;
 import com.bquiet.bquiet.fragments.NoiseLevelFragment;
 
+import io.realm.Realm;
+
 public class MainActivity extends FragmentActivity {
 
     private FragmentTabHost mTabHost;
@@ -26,6 +28,8 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Realm.init(this);
 
         setContentView(R.layout.activity_main);
         mTabHost = (FragmentTabHost) findViewById(R.id.activity_main_tabhost);
