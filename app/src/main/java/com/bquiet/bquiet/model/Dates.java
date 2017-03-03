@@ -3,24 +3,25 @@ package com.bquiet.bquiet.model;
 
 import java.util.Date;
 
-import io.realm.Realm;
 import io.realm.RealmObject;
 
 public class Dates extends RealmObject {
 
-    private Date date;
+    private Date registrationDate;
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+
 
     public Dates(){
 
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
 
 }

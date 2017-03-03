@@ -154,32 +154,37 @@ public class MainFragment extends Fragment {
     private void changeBackgroundImage(float noiseLevel) {
 
         Date actualDate = new Date();
+        //Realm realm = Realm.getDefaultInstance();
 
         if (noiseLevel < LOW_NOISE) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
             state.setText(R.string.low_state);
 
-            Realm realm = Realm.getDefaultInstance();
-            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
+
+            /*RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
             RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            */
+
         } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
             started = false;
             state.setText(R.string.normal_state);
 
-            Realm realm = Realm.getDefaultInstance();
+            /*
             RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
             RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            */
 
         } else if (noiseLevel > MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             state.setText(R.string.state_high);
 
-            Realm realm = Realm.getDefaultInstance();
+            /*
             RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
             RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            */
 
             if (!started) {
                 myStartDate = actualDate.getTime();

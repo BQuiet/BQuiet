@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Realm.init(this);
+        //Realm.init(this);
 
         setContentView(R.layout.activity_main);
         mTabHost = (FragmentTabHost) findViewById(R.id.activity_main_tabhost);

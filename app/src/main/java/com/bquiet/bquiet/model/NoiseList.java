@@ -6,15 +6,17 @@ import io.realm.RealmObject;
 
 
 public class NoiseList extends RealmObject {
-    public NoiseList getNoiseList() {
-        return noiseList;
+
+
+    public NoiseList getNoiseListPoint() {
+        return noiseListPoint;
     }
 
-    public void setNoiseList(NoiseList noiseList) {
-        this.noiseList = noiseList;
+    public void setNoiseListPoint(NoiseList noiseListPoint) {
+        this.noiseListPoint = noiseListPoint;
     }
 
-    private NoiseList noiseList;
+    private NoiseList noiseListPoint;
 
     public NoiseList(){
 
