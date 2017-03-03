@@ -7,12 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.bquiet.bquiet.R;
+import com.bquiet.bquiet.fragments.AboutFragment;
 import com.bquiet.bquiet.fragments.GraphicsFragment;
 import com.bquiet.bquiet.fragments.MainFragment;
 import com.bquiet.bquiet.fragments.MyClassFragment;
 import com.bquiet.bquiet.fragments.NoiseLevelFragment;
-
-import io.realm.Realm;
 
 public class MainActivity extends FragmentActivity {
 
@@ -47,6 +46,9 @@ public class MainActivity extends FragmentActivity {
         mTabHost.addTab(
                 mTabHost.newTabSpec("Graphics").setIndicator("Graphics", null),
                 GraphicsFragment.class, null);
+        mTabHost.addTab(
+                mTabHost.newTabSpec("About").setIndicator("About", null),
+                AboutFragment.class, null);
 
 
 
