@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.bquiet.bquiet.R;
-import com.bquiet.bquiet.fragments.AboutRobonautasFragment;
 import com.bquiet.bquiet.fragments.GraphicsFragment;
 import com.bquiet.bquiet.fragments.MainFragment;
 import com.bquiet.bquiet.fragments.MyClassFragment;
@@ -46,9 +45,6 @@ public class MainActivity extends FragmentActivity {
         mTabHost.addTab(
                 mTabHost.newTabSpec("Graphics").setIndicator("Graphics", null),
                 GraphicsFragment.class, null);
-        mTabHost.addTab(
-                mTabHost.newTabSpec("About").setIndicator("About", null),
-                AboutRobonautasFragment.class, null);
 
 
 
