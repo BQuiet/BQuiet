@@ -13,11 +13,17 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewAnimator;
-import android.widget.ViewSwitcher;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
+import com.bquiet.bquiet.model.Dates;
+import com.bquiet.bquiet.model.NoiseList;
 import com.github.anastr.speedviewlib.Speedometer;
+
+import java.util.Date;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 import static android.view.View.GONE;
 
@@ -26,8 +32,9 @@ import static android.view.View.GONE;
  */
 public class MainFragment extends Fragment {
 
-    public static final int MEDIUM_NOISE = 70;
-    public static final int LOW_NOISE = 10;
+    public static final int MEDIUM_NOISE = 80;
+    public static final int LOW_NOISE = 40;
+
 
 
     private Speedometer speedometer;
@@ -43,6 +50,8 @@ public class MainFragment extends Fragment {
     private ViewAnimator scrollView;
 
     private boolean speedometreWithTremble = false;
+    boolean started = false;
+    long myStartDate;
 
     Animation slide_in_left, slide_out_right;
     RecorderManager recorderManager;
@@ -50,10 +59,14 @@ public class MainFragment extends Fragment {
     MediaPlayer mp;
 
 
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
+
+        }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,9 +115,12 @@ public class MainFragment extends Fragment {
                         speedometer.speedTo((float) spl);
                         changeBackgroundImage((float) spl);
                         speedometer2.speedTo((float) spl);
-                        dB.setText("" + speedometer.getSpeed());
                         speedometer3.speedTo((float) spl);
                         speedometer4.speedTo((float) spl);
+
+                        float dBelios = speedometer.getSpeed();
+                        String realReader = String.format("%.0f dB", dBelios);
+                        dB.setText(realReader);
                     }
                 });
                 recorderManager.setListening(true);
@@ -136,20 +152,48 @@ public class MainFragment extends Fragment {
     }
 
     private void changeBackgroundImage(float noiseLevel) {
+
+        Date actualDate = new Date();
+        //Realm realm = Realm.getDefaultInstance();
+
         if (noiseLevel < LOW_NOISE) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
             state.setText(R.string.low_state);
+
+
+            /*RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            */
+
         } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
+            started = false;
             state.setText(R.string.normal_state);
+
+            /*
+            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            */
 
         } else if (noiseLevel > MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorHighNoise);
-            soundAlarm(getContext());
             state.setText(R.string.state_high);
 
+            /*
+            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            */
+
+            if (!started) {
+                myStartDate = actualDate.getTime();
+                started = true;
+            }else {
+                if ((actualDate.getTime() - myStartDate) > 2000 && 10000 > (actualDate.getTime() - myStartDate)) {
+                    soundAlarm(getContext());
+                }
+            }
         }
     }
 
