@@ -8,5 +8,8 @@
     <color name="colorMediumNoise">#ffd740</color>
     <color name="colorHighNoise">#ff5252</color>
 
+    <color name="colorClickNumberPickerArrow">#c71336</color>
+    <color name="colorClickNumberPickerText">#de234a</color>
+
 </resources>
 
