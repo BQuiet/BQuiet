@@ -50,6 +50,9 @@ public class MainFragment extends Fragment {
     boolean started = false;
     long myStartDate;
 
+    int lowMargin;
+    int mediumMargin;
+
     Animation slide_in_left, slide_out_right;
     RecorderManager recorderManager;
     RecorderManager.Ear ear;
@@ -77,8 +80,8 @@ public class MainFragment extends Fragment {
         scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
         SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
-        int lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
-        int mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
+        lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
+        mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
 
         speedometer.setLowSpeedPercent(lowMargin);
         speedometer2.setLowSpeedPercent(lowMargin);
@@ -159,7 +162,7 @@ public class MainFragment extends Fragment {
         Date actualDate = new Date();
         //Realm realm = Realm.getDefaultInstance();
 
-        if (noiseLevel < LOW_NOISE) {
+        if (noiseLevel < lowMargin) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
             state.setText(R.string.low_state);
@@ -174,7 +177,7 @@ public class MainFragment extends Fragment {
             RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
             */
 
-        } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
+        } else if (noiseLevel > lowMargin && noiseLevel < mediumMargin) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
             started = false;
@@ -188,7 +191,7 @@ public class MainFragment extends Fragment {
             RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
             */
 
-        } else if (noiseLevel > MEDIUM_NOISE) {
+        } else if (noiseLevel > mediumMargin) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             state.setText(R.string.state_high);
             /*
