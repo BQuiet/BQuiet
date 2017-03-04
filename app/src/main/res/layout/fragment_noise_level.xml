@@ -19,6 +19,7 @@
             android:textSize="@dimen/fragment_noise_level_label_text_size"/>
 
         <pl.polak.clicknumberpicker.ClickNumberPickerView
+            android:id="@+id/fragment_noise_level_low_picker"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             app:picker_corner_radius="10"
@@ -38,6 +39,7 @@
             android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>
 
         <pl.polak.clicknumberpicker.ClickNumberPickerView
+            android:id="@+id/fragment_noise_level_high_picker"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             app:picker_corner_radius="10"
