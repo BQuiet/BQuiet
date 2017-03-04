@@ -160,10 +160,15 @@ public class MainFragment extends Fragment {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
             state.setText(R.string.low_state);
+            /*
+            realm.beginTransaction();
+            NoiseList.setNoiseListPoint(noiseLevel);
+            Dates.setRegistrationDate(Date);
+            realm.commitTransaction();
 
 
-            /*RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
-            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("registrationDate");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
             */
 
         } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
@@ -171,19 +176,25 @@ public class MainFragment extends Fragment {
             stopAlarm();
             started = false;
             state.setText(R.string.normal_state);
-
             /*
-            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
-            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            realm.beginTransaction();
+            NoiseList.setNoiseListPoint(noiseLevel);
+            realm.commitTransaction();
+
+            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("registrationDate");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
             */
 
         } else if (noiseLevel > MEDIUM_NOISE) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             state.setText(R.string.state_high);
-
             /*
-            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("date");
-            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseLevel");
+            realm.beginTransaction();
+            NoiseList.setNoiseListPoint(noiseLevel);
+            realm.commitTransaction();
+
+            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("registrationDate");
+            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
             */
 
             if (!started) {
