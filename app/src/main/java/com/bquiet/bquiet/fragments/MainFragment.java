@@ -2,6 +2,7 @@ package com.bquiet.bquiet.fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
 //import com.bquiet.bquiet.model.Dates;
 //import com.bquiet.bquiet.model.NoiseList;
+import com.bquiet.bquiet.model.Constants;
 import com.github.anastr.speedviewlib.Speedometer;
 
 import java.util.Date;
@@ -27,15 +29,10 @@ import java.util.Date;
 
 import static android.view.View.GONE;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MainFragment extends Fragment {
 
     public static final int MEDIUM_NOISE = 80;
     public static final int LOW_NOISE = 40;
-
-
 
     private Speedometer speedometer;
     private Speedometer speedometer2;
@@ -53,20 +50,18 @@ public class MainFragment extends Fragment {
     boolean started = false;
     long myStartDate;
 
+    int lowMargin;
+    int mediumMargin;
+
     Animation slide_in_left, slide_out_right;
     RecorderManager recorderManager;
     RecorderManager.Ear ear;
     MediaPlayer mp;
 
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,6 +79,26 @@ public class MainFragment extends Fragment {
         dB = (TextView) v.findViewById(R.id.fragment_db_text_view);
         scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
+        SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
+        lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
+        mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
+
+        speedometer.setLowSpeedPercent(lowMargin);
+        speedometer2.setLowSpeedPercent(lowMargin);
+        speedometer3.setLowSpeedPercent(lowMargin);
+        speedometer4.setLowSpeedPercent(lowMargin);
+
+        speedometer.setMediumSpeedPercent(mediumMargin);
+        speedometer2.setMediumSpeedPercent(mediumMargin);
+        speedometer3.setMediumSpeedPercent(mediumMargin);
+        speedometer4.setMediumSpeedPercent(mediumMargin);
+
+        speedometer.setWithTremble(speedometreWithTremble);
+        speedometer2.setWithTremble(speedometreWithTremble);
+        speedometer3.setWithTremble(speedometreWithTremble);
+        speedometer4.setWithTremble(speedometreWithTremble);
+
+
         scrollView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,17 +107,8 @@ public class MainFragment extends Fragment {
             }
         });
 
-
-        speedometer.setWithTremble(speedometreWithTremble);
-        speedometer.setLowSpeedPercent(LOW_NOISE);
-        speedometer.setMediumSpeedPercent(MEDIUM_NOISE);
-
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(GONE);
-
-
-
-
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,7 +162,7 @@ public class MainFragment extends Fragment {
         Date actualDate = new Date();
         //Realm realm = Realm.getDefaultInstance();
 
-        if (noiseLevel < LOW_NOISE) {
+        if (noiseLevel < lowMargin) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
             state.setText(R.string.low_state);
@@ -171,7 +177,7 @@ public class MainFragment extends Fragment {
             RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
             */
 
-        } else if (noiseLevel > LOW_NOISE && noiseLevel < MEDIUM_NOISE) {
+        } else if (noiseLevel > lowMargin && noiseLevel < mediumMargin) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
             started = false;
@@ -185,7 +191,7 @@ public class MainFragment extends Fragment {
             RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
             */
 
-        } else if (noiseLevel > MEDIUM_NOISE) {
+        } else if (noiseLevel > mediumMargin) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             state.setText(R.string.state_high);
             /*

@@ -18,20 +18,14 @@
             android:layout_margin="@dimen/fragment_noise_level_grid_margin"
             android:textSize="@dimen/fragment_noise_level_label_text_size"/>
 
-        <!--<NumberPicker
-            android:id="@+id/fragment_noise_level_number_picker_low"
-            android:layout_toRightOf="@id/fragment_noise_level_label_low_text"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>-->
-
         <pl.polak.clicknumberpicker.ClickNumberPickerView
+            android:id="@+id/fragment_noise_level_low_picker"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             app:picker_corner_radius="10"
-            app:pickers_background_color="#3F51B5"
+            app:pickers_background_color="@color/colorClickNumberPickerText"
             app:swipe_enabled="false"
-            app:value_background_color="#5C6BC0"
+            app:value_background_color="@color/colorClickNumberPickerArrow"
             app:value_text_color="@android:color/white"
             android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>
 
@@ -45,12 +39,13 @@
             android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>
 
         <pl.polak.clicknumberpicker.ClickNumberPickerView
+            android:id="@+id/fragment_noise_level_high_picker"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             app:picker_corner_radius="10"
-            app:pickers_background_color="#3F51B5"
+            app:pickers_background_color="@color/colorClickNumberPickerText"
             app:swipe_enabled="false"
-            app:value_background_color="#5C6BC0"
+            app:value_background_color="@color/colorClickNumberPickerArrow"
             app:value_text_color="@android:color/white"
             android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>
 
