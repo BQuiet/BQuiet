@@ -78,17 +78,17 @@ public class MainFragment extends Fragment {
 
         SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
         int lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
-        int highMargin = preferences.getInt("highMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
+        int mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
 
         speedometer.setLowSpeedPercent(lowMargin);
         speedometer2.setLowSpeedPercent(lowMargin);
         speedometer3.setLowSpeedPercent(lowMargin);
         speedometer4.setLowSpeedPercent(lowMargin);
 
-        speedometer.setMediumSpeedPercent(highMargin);
-        speedometer2.setMediumSpeedPercent(highMargin);
-        speedometer3.setMediumSpeedPercent(highMargin);
-        speedometer4.setMediumSpeedPercent(highMargin);
+        speedometer.setMediumSpeedPercent(mediumMargin);
+        speedometer2.setMediumSpeedPercent(mediumMargin);
+        speedometer3.setMediumSpeedPercent(mediumMargin);
+        speedometer4.setMediumSpeedPercent(mediumMargin);
 
         speedometer.setWithTremble(speedometreWithTremble);
         speedometer2.setWithTremble(speedometreWithTremble);

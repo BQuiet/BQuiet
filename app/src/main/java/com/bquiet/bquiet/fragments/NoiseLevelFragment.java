@@ -16,9 +16,6 @@ import pl.polak.clicknumberpicker.ClickNumberPickerListener;
 import pl.polak.clicknumberpicker.ClickNumberPickerView;
 import pl.polak.clicknumberpicker.PickerClickType;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class NoiseLevelFragment extends Fragment {
 
     Speedometer speedometer;
@@ -28,7 +25,6 @@ public class NoiseLevelFragment extends Fragment {
 
     public NoiseLevelFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,13 +38,13 @@ public class NoiseLevelFragment extends Fragment {
 
         SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
         int lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
-        int highMargin = preferences.getInt("highMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
+        int mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
 
         lowClickNumberPickerView.setPickerValue(lowMargin);
-        highClickNumberPickerView.setPickerValue(highMargin);
+        highClickNumberPickerView.setPickerValue(mediumMargin);
 
         speedometer.setLowSpeedPercent(lowMargin);
-        speedometer.setMediumSpeedPercent(highMargin);
+        speedometer.setMediumSpeedPercent(mediumMargin);
 
         lowClickNumberPickerView.setClickNumberPickerListener(new ClickNumberPickerListener() {
             @Override
@@ -69,7 +65,7 @@ public class NoiseLevelFragment extends Fragment {
 
                 SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("highMargin", (int) currentValue);
+                editor.putInt("mediumMargin", (int) currentValue);
                 editor.commit();
             }
         });
