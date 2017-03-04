@@ -6,4 +6,6 @@
     <string name="low_state">Bajo</string>
     <string name="normal_state">Normal</string>
     <string name="state_high">Alto</string>
+    <string name="fragment_noise_level_label_low_text">Límite inferior</string>
+    <string name="fragment_noise_level_label_high_text">Límite superior</string>
 </resources>

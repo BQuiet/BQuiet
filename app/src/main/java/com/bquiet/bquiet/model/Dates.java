@@ -1,5 +1,5 @@
 package com.bquiet.bquiet.model;
-
+/*
 
 import java.util.Date;
 
@@ -20,7 +20,4 @@ public class Dates extends RealmObject {
     public Dates(){
 
     }
-
-
-
-}
+}*/

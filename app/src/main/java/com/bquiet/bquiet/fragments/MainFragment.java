@@ -16,14 +16,14 @@ import android.widget.ViewAnimator;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
-import com.bquiet.bquiet.model.Dates;
-import com.bquiet.bquiet.model.NoiseList;
+//import com.bquiet.bquiet.model.Dates;
+//import com.bquiet.bquiet.model.NoiseList;
 import com.github.anastr.speedviewlib.Speedometer;
 
 import java.util.Date;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
+//import io.realm.Realm;
+//import io.realm.RealmResults;
 
 import static android.view.View.GONE;
 

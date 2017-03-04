@@ -1,5 +1,5 @@
 package com.bquiet.bquiet.model;
-
+/*
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -18,7 +18,7 @@ public class NoiseList extends RealmObject {
     public static void setNoiseListPoint(float noiseListPoint) {
         NoiseList.noiseListPoint = noiseListPoint;
     }
-}
+}*/
 
 
 

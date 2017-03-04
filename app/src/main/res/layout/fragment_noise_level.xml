@@ -1,15 +1,73 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.bquiet.bquiet.fragments.NoiseLevelFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Noise Level Frament"
-        android:textSize="40dp"
-        android:gravity="center"/>
+    <GridLayout
+        android:columnCount="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/fragment_noise_level_label_low_text"
+            android:text="@string/fragment_noise_level_label_low_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fragment_noise_level_grid_margin"
+            android:textSize="@dimen/fragment_noise_level_label_text_size"/>
 
-</FrameLayout>
+        <!--<NumberPicker
+            android:id="@+id/fragment_noise_level_number_picker_low"
+            android:layout_toRightOf="@id/fragment_noise_level_label_low_text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>-->
+
+        <pl.polak.clicknumberpicker.ClickNumberPickerView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            app:picker_corner_radius="10"
+            app:pickers_background_color="#3F51B5"
+            app:swipe_enabled="false"
+            app:value_background_color="#5C6BC0"
+            app:value_text_color="@android:color/white"
+            android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>
+
+        <TextView
+            android:id="@+id/fragment_noise_level_label_high_text"
+            android:layout_below="@id/fragment_noise_level_label_low_text"
+            android:text="@string/fragment_noise_level_label_high_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/fragment_noise_level_label_text_size"
+            android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>
+
+        <pl.polak.clicknumberpicker.ClickNumberPickerView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            app:picker_corner_radius="10"
+            app:pickers_background_color="#3F51B5"
+            app:swipe_enabled="false"
+            app:value_background_color="#5C6BC0"
+            app:value_text_color="@android:color/white"
+            android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>
+
+    </GridLayout>
+
+    <com.github.anastr.speedviewlib.SpeedView
+        android:id="@+id/fragment_noise_level_speedometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        app:maxSpeed="100"
+        app:minSpeed="0"
+        app:speedTextFormat="INTEGER"
+        app:unit="dB"
+        app:endDegree="360"
+        app:startDegree="180"
+        app:indicator="NoIndicator"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
