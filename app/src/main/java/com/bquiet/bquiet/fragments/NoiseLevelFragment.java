@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bquiet.bquiet.R;
+import com.bquiet.bquiet.model.Constants;
 import com.github.anastr.speedviewlib.Speedometer;
 
 import pl.polak.clicknumberpicker.ClickNumberPickerListener;
@@ -40,8 +41,8 @@ public class NoiseLevelFragment extends Fragment {
         highClickNumberPickerView = (ClickNumberPickerView) view.findViewById(R.id.fragment_noise_level_high_picker);
 
         SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
-        int lowMargin = preferences.getInt("lowMargin", 50);
-        int highMargin = preferences.getInt("highMargin", 90);
+        int lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
+        int highMargin = preferences.getInt("highMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
 
         lowClickNumberPickerView.setPickerValue(lowMargin);
         highClickNumberPickerView.setPickerValue(highMargin);

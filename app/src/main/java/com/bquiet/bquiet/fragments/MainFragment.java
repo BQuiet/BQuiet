@@ -77,9 +77,9 @@ public class MainFragment extends Fragment {
         scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
         SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
-        int lowMargin = preferences.getInt("lowMargin", 50);
-        int highMargin = preferences.getInt("highMargin", 90);
-        
+        int lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
+        int highMargin = preferences.getInt("highMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
+
         speedometer.setLowSpeedPercent(lowMargin);
         speedometer2.setLowSpeedPercent(lowMargin);
         speedometer3.setLowSpeedPercent(lowMargin);
