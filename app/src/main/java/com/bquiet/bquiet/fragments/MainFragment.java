@@ -2,6 +2,7 @@ package com.bquiet.bquiet.fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
 //import com.bquiet.bquiet.model.Dates;
 //import com.bquiet.bquiet.model.NoiseList;
+import com.bquiet.bquiet.model.Constants;
 import com.github.anastr.speedviewlib.Speedometer;
 
 import java.util.Date;
@@ -27,15 +29,10 @@ import java.util.Date;
 
 import static android.view.View.GONE;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MainFragment extends Fragment {
 
     public static final int MEDIUM_NOISE = 80;
     public static final int LOW_NOISE = 40;
-
-
 
     private Speedometer speedometer;
     private Speedometer speedometer2;
@@ -58,15 +55,10 @@ public class MainFragment extends Fragment {
     RecorderManager.Ear ear;
     MediaPlayer mp;
 
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,6 +76,26 @@ public class MainFragment extends Fragment {
         dB = (TextView) v.findViewById(R.id.fragment_db_text_view);
         scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
+        SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
+        int lowMargin = preferences.getInt("lowMargin", 50);
+        int highMargin = preferences.getInt("highMargin", 90);
+        
+        speedometer.setLowSpeedPercent(lowMargin);
+        speedometer2.setLowSpeedPercent(lowMargin);
+        speedometer3.setLowSpeedPercent(lowMargin);
+        speedometer4.setLowSpeedPercent(lowMargin);
+
+        speedometer.setMediumSpeedPercent(highMargin);
+        speedometer2.setMediumSpeedPercent(highMargin);
+        speedometer3.setMediumSpeedPercent(highMargin);
+        speedometer4.setMediumSpeedPercent(highMargin);
+
+        speedometer.setWithTremble(speedometreWithTremble);
+        speedometer2.setWithTremble(speedometreWithTremble);
+        speedometer3.setWithTremble(speedometreWithTremble);
+        speedometer4.setWithTremble(speedometreWithTremble);
+
+
         scrollView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,17 +104,8 @@ public class MainFragment extends Fragment {
             }
         });
 
-
-        speedometer.setWithTremble(speedometreWithTremble);
-        speedometer.setLowSpeedPercent(LOW_NOISE);
-        speedometer.setMediumSpeedPercent(MEDIUM_NOISE);
-
         playButton.setVisibility(View.VISIBLE);
         pauseButton.setVisibility(GONE);
-
-
-
-
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
