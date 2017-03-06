@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,6 +81,8 @@ public class MainFragment extends Fragment {
         dB = (TextView) v.findViewById(R.id.fragment_db_text_view);
         scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
+
+
         SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
         lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
         mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
@@ -131,12 +135,19 @@ public class MainFragment extends Fragment {
                 });
                 recorderManager.setListening(true);
                 //ear.cancel(recorderManager.isListening());
-                ear.execute();
-
-                playButton.setPressed(true);
-                playButton.setVisibility(GONE);
-                pauseButton.setVisibility(View.VISIBLE);
-
+                try {
+                    ear.execute();
+                    playButton.setPressed(true);
+                    playButton.setVisibility(GONE);
+                    pauseButton.setVisibility(View.VISIBLE);
+                }catch (Exception e){
+                    Log.d("MIC_ERROR", "MIC HAD SOME ERRORS");
+                    View parent = (View) view.getParent();
+                    Snackbar mySnackBar = Snackbar.make(parent, "El dispositivo no es compatible.", Snackbar. LENGTH_SHORT);
+                    mySnackBar.show();
+                    pauseButton.setVisibility(View.INVISIBLE);
+                    playButton.setVisibility(View.VISIBLE);
+                }
             }
         });
 
