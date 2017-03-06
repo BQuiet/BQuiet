@@ -58,6 +58,9 @@ public class MainFragment extends Fragment {
     RecorderManager.Ear ear;
     MediaPlayer mp;
 
+    public MainFragment() {
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -201,7 +204,11 @@ public class MainFragment extends Fragment {
             mp = null;
         }
     }
+    public static Fragment newInstance() {
+        MainFragment myFragment = new MainFragment();
+        return myFragment;
 
+    }
 }
 
 

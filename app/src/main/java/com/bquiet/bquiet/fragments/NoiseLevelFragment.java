@@ -73,5 +73,10 @@ public class NoiseLevelFragment extends Fragment {
         return view;
 
     }
+    public static Fragment newInstance() {
+        NoiseLevelFragment myFragment = new NoiseLevelFragment();
+        return myFragment;
+
+    }
 
 }

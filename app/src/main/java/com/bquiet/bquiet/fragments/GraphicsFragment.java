@@ -26,5 +26,9 @@ public class GraphicsFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_graphics, container, false);
     }
+    public static Fragment newInstance() {
+        GraphicsFragment myFragment = new GraphicsFragment();
+        return myFragment;
 
+    }
 }

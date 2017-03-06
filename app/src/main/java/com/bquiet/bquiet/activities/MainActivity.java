@@ -1,18 +1,15 @@
 package com.bquiet.bquiet.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 
+import com.bquiet.bquiet.MiFragmentPagerAdapter;
 import com.bquiet.bquiet.R;
-import com.bquiet.bquiet.fragments.GraphicsFragment;
-import com.bquiet.bquiet.fragments.MainFragment;
-import com.bquiet.bquiet.fragments.MyClassFragment;
-import com.bquiet.bquiet.fragments.NoiseLevelFragment;
-
-import io.realm.Realm;
 
 public class MainActivity extends FragmentActivity {
 
@@ -28,10 +25,18 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
-        mTabHost = (FragmentTabHost) findViewById(R.id.activity_main_tabhost);
+
+
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new MiFragmentPagerAdapter(getSupportFragmentManager()));
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.appbartabs);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setupWithViewPager(viewPager);
+
+
+        /*mTabHost = (FragmentTabHost) findViewById(R.id.activity_main_tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.activity_main__tabcontent);
 
         mTabHost.addTab(
@@ -45,7 +50,7 @@ public class MainActivity extends FragmentActivity {
                 NoiseLevelFragment.class, null);
         mTabHost.addTab(
                 mTabHost.newTabSpec("Graphics").setIndicator("Graphics", null),
-                GraphicsFragment.class, null);
+                GraphicsFragment.class, null);*/
 
     }
 
