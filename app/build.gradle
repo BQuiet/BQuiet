@@ -35,6 +35,7 @@ dependencies {
     compile 'com.android.support:support-v4:25.2.0'
     compile 'com.github.anastr:speedviewlib:1.1.3'
     compile 'com.github.polok:clicknumberpicker:0.1.2'
-    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:design:25.2.0'
+
     testCompile 'junit:junit:4.12'
 }

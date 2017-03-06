@@ -12,10 +12,10 @@ import com.bquiet.bquiet.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GraphicsFragment extends Fragment {
+public class Fragment1 extends Fragment {
 
 
-    public GraphicsFragment() {
+    public Fragment1() {
         // Required empty public constructor
     }
 
@@ -24,10 +24,11 @@ public class GraphicsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_graphics, container, false);
+        return inflater.inflate(R.layout.fragment_fragment1, container, false);
     }
+
     public static Fragment newInstance() {
-        GraphicsFragment myFragment = new GraphicsFragment();
+        Fragment1 myFragment = new Fragment1();
         return myFragment;
 
     }
