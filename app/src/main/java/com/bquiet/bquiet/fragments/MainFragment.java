@@ -160,48 +160,24 @@ public class MainFragment extends Fragment {
     private void changeBackgroundImage(float noiseLevel) {
 
         Date actualDate = new Date();
-        //Realm realm = Realm.getDefaultInstance();
 
         if (noiseLevel < lowMargin) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
             state.setText(R.string.low_state);
-            /*
-            realm.beginTransaction();
-            NoiseList.setNoiseListPoint(noiseLevel);
-            Dates.setRegistrationDate(Date);
-            realm.commitTransaction();
 
-
-            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("registrationDate");
-            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
-            */
 
         } else if (noiseLevel > lowMargin && noiseLevel < mediumMargin) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
             stopAlarm();
             started = false;
             state.setText(R.string.normal_state);
-            /*
-            realm.beginTransaction();
-            NoiseList.setNoiseListPoint(noiseLevel);
-            realm.commitTransaction();
 
-            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("registrationDate");
-            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
-            */
 
         } else if (noiseLevel > mediumMargin) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             state.setText(R.string.state_high);
-            /*
-            realm.beginTransaction();
-            NoiseList.setNoiseListPoint(noiseLevel);
-            realm.commitTransaction();
-
-            RealmResults<Dates> dates = realm.where(Dates.class).findAllSorted("registrationDate");
-            RealmResults<NoiseList> noiseLists = realm.where(NoiseList.class).findAllSorted("noiseListPoint");
-            */
+           
 
             if (!started) {
                 myStartDate = actualDate.getTime();

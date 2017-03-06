@@ -17,7 +17,6 @@ import io.realm.Realm;
 public class MainActivity extends FragmentActivity {
 
     private FragmentTabHost mTabHost;
-    //private Realm realm;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -30,8 +29,6 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Realm.init(this);
-        //realm = Realm.getDefaultInstance();
 
         setContentView(R.layout.activity_main);
         mTabHost = (FragmentTabHost) findViewById(R.id.activity_main_tabhost);
@@ -51,11 +48,5 @@ public class MainActivity extends FragmentActivity {
                 GraphicsFragment.class, null);
 
     }
-
-    /*@Override
-    protected void onDestroy() {
-        super.onDestroy();
-        realm.close();
-    }*/
 
 }
