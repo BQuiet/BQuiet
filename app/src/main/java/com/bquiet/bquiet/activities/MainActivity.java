@@ -38,18 +38,17 @@ public class MainActivity extends FragmentActivity {
         mTabHost.setup(this, getSupportFragmentManager(), R.id.activity_main__tabcontent);
 
         mTabHost.addTab(
-                mTabHost.newTabSpec("Noisemetre").setIndicator("Noisemetre", null),
+                mTabHost.newTabSpec("Sonómetro").setIndicator("Sonómetro", null),
                 MainFragment.class, null);
         mTabHost.addTab(
-                mTabHost.newTabSpec("My Class").setIndicator("My Class", null),
+                mTabHost.newTabSpec("Mi clase").setIndicator("Mi clase", null),
                 MyClassFragment.class, null);
         mTabHost.addTab(
-                mTabHost.newTabSpec("Noise Level").setIndicator("Noise Level", null),
+                mTabHost.newTabSpec("Niveles").setIndicator("Niveles", null),
                 NoiseLevelFragment.class, null);
         mTabHost.addTab(
-                mTabHost.newTabSpec("Graphics").setIndicator("Graphics", null),
+                mTabHost.newTabSpec("Estadísticas").setIndicator("Estadísticas", null),
                 GraphicsFragment.class, null);
-
     }
 
     /*@Override
