@@ -75,7 +75,7 @@
                     android:layout_width="200dp"
                     android:layout_height="100dp"
                     android:src="@drawable/card_about_bquiet"
-                    android:layout_toRightOf="@id/fragment_about_BQ__Telephone"
+                    android:layout_toRightOf="@+id/fragment_about_BQ__gitHub"
                     android:layout_marginLeft="60dp"
                     />
 
