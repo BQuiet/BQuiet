@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/fragment_about_RN__Telephone"            />
         <TextView
-            android:id="@+id/fragment_about_RN__Face"
+            android:id="@+id/fragment_about_RN__web"
             android:text="http://www.robonautas.com"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -62,7 +62,7 @@
 
                 >
                 <TextView
-                    android:id="@+id/fragment_about_BQ__Telephone"
+                    android:id="@+id/fragment_about_BQ__gitHub"
                     android:text="https://github.com/BQuiet"
                     android:textSize="20sp"
                     android:textStyle="bold"
