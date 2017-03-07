@@ -127,15 +127,6 @@ public class SonometerFragment extends Fragment {
                 pauseButton.setPressed(true);
                 playButton.setVisibility(View.VISIBLE);
                 pauseButton.setVisibility(GONE);
-                /*
-                Realm realm = Realm.getDefaultInstance();
-
-                RealmResults<KeepRealm> listRealm = realm.where(KeepRealm.class).findAllSorted("date");
-
-                for (int i = 0; i < listRealm.size() ; i++) {
-                    Log.d("BBDD", "" + listRealm.get(i).getSpl());
-                }
-                */
 
             }
         });
