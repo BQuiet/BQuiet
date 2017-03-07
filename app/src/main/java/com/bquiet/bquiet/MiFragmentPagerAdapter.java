@@ -8,14 +8,10 @@ import com.bquiet.bquiet.fragments.GraphicsFragment;
 import com.bquiet.bquiet.fragments.SonometerFragment;
 import com.bquiet.bquiet.fragments.NoiseLevelFragment;
 
-/**
- * Created by gemabeltran on 6/3/17.
- */
-
 public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private String tabTitles[] =
-            new String[] { "   Sonómetro   ", "   Niveles   ", "   About as   "};
+            new String[] { "   Sonómetro   ", "   Niveles   ", "   Equipo   "};
 
     public MiFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
