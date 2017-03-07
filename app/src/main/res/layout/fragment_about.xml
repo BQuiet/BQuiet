@@ -4,10 +4,98 @@
     android:layout_height="match_parent"
     tools:context="com.bquiet.bquiet.fragments.AboutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="268dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/fragment_about_linear_RN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/fragment_about_card_robonautas"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:src="@drawable/card_about_robonautass"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+        <TextView
+            android:id="@+id/fragment_about_RN__Telephone"
+            android:text="Llamar 951 08 23 32"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/fragment_about_RN__Email"
+            android:text="info@robonautas.com"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_about_RN__Telephone"            />
+        <TextView
+            android:id="@+id/fragment_about_RN__Face"
+            android:text="http://www.robonautas.com"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_about_RN__Email"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/fragment_about_logo_BQ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="70dp"
+
+                >
+                <TextView
+                    android:id="@+id/fragment_about_BQ__Telephone"
+                    android:text="Llamar 951 08 23 32"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/fragment_about_BQ__Email"
+                    android:text="info@robonautas.com"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fragment_about_BQ__Telephone"
+                    />
+                <TextView
+                    android:id="@+id/fragment_about_BQ__Face"
+                    android:text="http://www.robonautas.com"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_below="@id/fragment_about_BQ__Email"
+                    />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/card_about_bquiet"
+                    android:id="@+id/imageView"
+                    android:layout_toRightOf="@id/fragment_about_BQ__Telephone"
+                    android:layout_marginLeft="60dp"
+                    />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 </FrameLayout>
