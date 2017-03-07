@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 
 import com.bquiet.bquiet.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+// Fragment to show data in graphics
 public class GraphicsFragment extends Fragment {
 
 

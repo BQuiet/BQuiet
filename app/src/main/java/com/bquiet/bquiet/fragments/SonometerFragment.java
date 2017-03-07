@@ -31,7 +31,7 @@ import java.util.Date;
 
 import static android.view.View.GONE;
 
-public class MainFragment extends Fragment {
+public class SonometerFragment extends Fragment {
 
     public static final int MEDIUM_NOISE = 80;
     public static final int LOW_NOISE = 40;
@@ -59,8 +59,9 @@ public class MainFragment extends Fragment {
     RecorderManager recorderManager;
     RecorderManager.Ear ear;
     MediaPlayer mp;
+    private boolean playing;
 
-    public MainFragment() {
+    public SonometerFragment() {
     }
 
     @Override
@@ -85,26 +86,7 @@ public class MainFragment extends Fragment {
         scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
 
-
-        SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
-        lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
-        mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
-
-        speedometer.setLowSpeedPercent(lowMargin);
-        speedometer2.setLowSpeedPercent(lowMargin);
-        speedometer3.setLowSpeedPercent(lowMargin);
-        speedometer4.setLowSpeedPercent(lowMargin);
-
-        speedometer.setMediumSpeedPercent(mediumMargin);
-        speedometer2.setMediumSpeedPercent(mediumMargin);
-        speedometer3.setMediumSpeedPercent(mediumMargin);
-        speedometer4.setMediumSpeedPercent(mediumMargin);
-
-        speedometer.setWithTremble(speedometreWithTremble);
-        speedometer2.setWithTremble(speedometreWithTremble);
-        speedometer3.setWithTremble(speedometreWithTremble);
-        speedometer4.setWithTremble(speedometreWithTremble);
-
+        configureSpeedometers();
 
         scrollView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,57 +100,101 @@ public class MainFragment extends Fragment {
         pauseButton.setVisibility(GONE);
 
         playButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                recorderManager = new RecorderManager();
-                ear = recorderManager.new Ear();
-                ear.setOnEarListener(new RecorderManager.EarListener() {
-                    @Override
-                    public void newValueFromEar(double spl) {
-                        speedometer.speedTo((float) spl);
-                        changeBackgroundImage((float) spl);
-                        speedometer2.speedTo((float) spl);
-                        speedometer3.speedTo((float) spl);
-                        speedometer4.speedTo((float) spl);
-
-                        float dBelios = speedometer.getSpeed();
-                        String realReader = String.format("%.0f dB", dBelios);
-                        dB.setText(realReader);
-                    }
-                });
-                recorderManager.setListening(true);
-                //ear.cancel(recorderManager.isListening());
-                try {
-                    ear.execute();
-                    playButton.setPressed(true);
-                    playButton.setVisibility(GONE);
-                    pauseButton.setVisibility(View.VISIBLE);
-                }catch (Exception e){
-                    Log.d("MIC_ERROR", "MIC HAD SOME ERRORS");
-                    View parent = (View) view.getParent();
-                    Snackbar mySnackBar = Snackbar.make(parent, "El dispositivo no es compatible.", Snackbar. LENGTH_SHORT);
-                    mySnackBar.show();
-                    pauseButton.setVisibility(View.INVISIBLE);
-                    playButton.setVisibility(View.VISIBLE);
-                }
+                playing = true;
+                startSonometer();
             }
         });
 
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recorderManager.setListening(false);
-                speedometer.speedTo(0.0f);
-                recorderManager.stopMediaRecorder();
-                ear.cancel(recorderManager.isListening());
-
-                pauseButton.setPressed(true);
-                playButton.setVisibility(View.VISIBLE);
-                pauseButton.setVisibility(GONE);
+                playing = false;
+                pauseSonometer();
             }
         });
 
         return v;
+    }
+
+    private void configureSpeedometers() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
+        lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
+        mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
+
+        final Speedometer[] speedometers = {
+                speedometer,
+                speedometer2,
+                speedometer3,
+                speedometer4
+        };
+
+        for (Speedometer sp: speedometers) {
+            sp.setLowSpeedPercent(lowMargin);
+            sp.setMediumSpeedPercent(mediumMargin);
+            sp.setWithTremble(speedometreWithTremble);
+        }
+    }
+
+    private void startSonometer() {
+        recorderManager = new RecorderManager();
+        ear = recorderManager.new Ear();
+        ear.setOnEarListener(new RecorderManager.EarListener() {
+            @Override
+            public void newValueFromEar(double spl) {
+                speedometer.speedTo((float) spl);
+                changeBackgroundImage((float) spl);
+                speedometer2.speedTo((float) spl);
+                speedometer3.speedTo((float) spl);
+                speedometer4.speedTo((float) spl);
+
+                float dBelios = speedometer.getSpeed();
+                String realReader = String.format("%.0f dB", dBelios);
+                dB.setText(realReader);
+            }
+        });
+        recorderManager.setListening(true);
+        //ear.cancel(recorderManager.isListening());
+        try {
+            ear.execute();
+            playButton.setPressed(true);
+            playButton.setVisibility(GONE);
+            pauseButton.setVisibility(View.VISIBLE);
+        }catch (Exception e){
+            Log.d("MIC_ERROR", "MIC HAD SOME ERRORS");
+            View parent = getView();
+            Snackbar mySnackBar = Snackbar.make(parent, "El dispositivo no es compatible.", Snackbar. LENGTH_SHORT);
+            mySnackBar.show();
+            pauseButton.setVisibility(View.INVISIBLE);
+            playButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void pauseSonometer() {
+        recorderManager.setListening(false);
+        speedometer.speedTo(0.0f);
+        recorderManager.stopMediaRecorder();
+        ear.cancel(recorderManager.isListening());
+
+        pauseButton.setPressed(true);
+        playButton.setVisibility(View.VISIBLE);
+        pauseButton.setVisibility(GONE);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        configureSpeedometers();
+
+        if (playing) {
+            if (recorderManager == null) {
+                startSonometer();
+            } else {
+                pauseSonometer();
+            }
+        }
     }
 
     private void changeBackgroundImage(float noiseLevel) {
@@ -216,7 +242,7 @@ public class MainFragment extends Fragment {
         }
     }
     public static Fragment newInstance() {
-        MainFragment myFragment = new MainFragment();
+        SonometerFragment myFragment = new SonometerFragment();
         return myFragment;
 
     }
