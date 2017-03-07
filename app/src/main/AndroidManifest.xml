@@ -23,8 +23,9 @@
         </activity>
         <activity
             android:name=".activities.MainActivity"
-            android:screenOrientation="landscape"></activity>
-
+            android:screenOrientation="landscape" />
+        <activity android:name=".activities.DevelopersActivity" />
+        <activity android:name=".activities.AboutActivity"></activity>
     </application>
 
 </manifest>
