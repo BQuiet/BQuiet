@@ -1,4 +1,4 @@
-package com.bquiet.bquiet;
+package com.bquiet.bquiet.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,14 +8,12 @@ import com.bquiet.bquiet.fragments.GraphicsFragment;
 import com.bquiet.bquiet.fragments.SonometerFragment;
 import com.bquiet.bquiet.fragments.NoiseLevelFragment;
 
-/**
- * Created by gemabeltran on 6/3/17.
- */
+
 
 public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private String tabTitles[] =
-            new String[] { "   Sonómetro   ", "   Niveles   ", "   About as   "};
+            new String[] { "   Sonómetro   ", "   Niveles   ", "   About us   "};
 
     public MiFragmentPagerAdapter(FragmentManager fm) {
         super(fm);

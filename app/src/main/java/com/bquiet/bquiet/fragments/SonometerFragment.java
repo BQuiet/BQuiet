@@ -22,12 +22,16 @@ import com.bquiet.bquiet.manager.RecorderManager;
 //import com.bquiet.bquiet.model.Dates;
 //import com.bquiet.bquiet.model.NoiseList;
 import com.bquiet.bquiet.model.Constants;
+import com.bquiet.bquiet.model.KeepRealm;
 import com.github.anastr.speedviewlib.Speedometer;
 
 import java.util.Date;
 
 //import io.realm.Realm;
 //import io.realm.RealmResults;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 import static android.view.View.GONE;
 
@@ -67,6 +71,7 @@ public class SonometerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -108,11 +113,30 @@ public class SonometerFragment extends Fragment {
             }
         });
 
+
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 playing = false;
                 pauseSonometer();
+                recorderManager.setListening(false);
+                speedometer.speedTo(0.0f);
+                recorderManager.stopMediaRecorder();
+                ear.cancel(recorderManager.isListening());
+
+                pauseButton.setPressed(true);
+                playButton.setVisibility(View.VISIBLE);
+                pauseButton.setVisibility(GONE);
+                /*
+                Realm realm = Realm.getDefaultInstance();
+
+                RealmResults<KeepRealm> listRealm = realm.where(KeepRealm.class).findAllSorted("date");
+
+                for (int i = 0; i < listRealm.size() ; i++) {
+                    Log.d("BBDD", "" + listRealm.get(i).getSpl());
+                }
+                */
+
             }
         });
 
@@ -201,11 +225,15 @@ public class SonometerFragment extends Fragment {
 
         Date actualDate = new Date();
 
+
         if (noiseLevel < lowMargin) {
             layout.setBackgroundResource(R.color.colorLowNoise);
             stopAlarm();
             state.setText(R.string.low_state);
 
+
+            final KeepRealm keepRealm = new KeepRealm(new Date(), noiseLevel);
+            saveToRealm(keepRealm);
 
         } else if (noiseLevel > lowMargin && noiseLevel < mediumMargin) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
@@ -213,11 +241,15 @@ public class SonometerFragment extends Fragment {
             started = false;
             state.setText(R.string.normal_state);
 
+            final KeepRealm keepRealm = new KeepRealm(new Date(), noiseLevel);
+            saveToRealm(keepRealm);
 
         } else if (noiseLevel > mediumMargin) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             state.setText(R.string.state_high);
-           
+
+            final KeepRealm keepRealm = new KeepRealm(new Date(), noiseLevel);
+            saveToRealm(keepRealm);
 
             if (!started) {
                 myStartDate = actualDate.getTime();
@@ -225,9 +257,23 @@ public class SonometerFragment extends Fragment {
             }else {
                 if ((actualDate.getTime() - myStartDate) > 2000 && 10000 > (actualDate.getTime() - myStartDate)) {
                     soundAlarm(getContext());
+
                 }
             }
         }
+    }
+
+    private void saveToRealm(final KeepRealm realmKeeper) {
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                realm.copyToRealm(realmKeeper);
+
+            }
+        });
     }
 
     private void soundAlarm(Context context){
@@ -246,6 +292,7 @@ public class SonometerFragment extends Fragment {
         return myFragment;
 
     }
+
 }
 
 
