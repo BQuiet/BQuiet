@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity {
 
         mTabHost.addTab(
                 mTabHost.newTabSpec("Sonómetro").setIndicator("Sonómetro", null),
-                MainFragment.class, null);
+                SonometerFragment.class, null);
         mTabHost.addTab(
                 mTabHost.newTabSpec("Mi clase").setIndicator("Mi clase", null),
                 MyClassFragment.class, null);

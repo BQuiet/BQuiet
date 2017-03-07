@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.bquiet.bquiet.fragments.GraphicsFragment;
-import com.bquiet.bquiet.fragments.MainFragment;
+import com.bquiet.bquiet.fragments.SonometerFragment;
 import com.bquiet.bquiet.fragments.NoiseLevelFragment;
 
 /**
@@ -29,11 +29,11 @@ public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        Fragment f = (MainFragment) MainFragment.newInstance();
+        Fragment f = (SonometerFragment) SonometerFragment.newInstance();
 
         switch(position) {
             case 0:
-                f =  MainFragment.newInstance();
+                f =  SonometerFragment.newInstance();
                 break;
             case 1:
                 f = NoiseLevelFragment.newInstance();
