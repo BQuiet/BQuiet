@@ -1,4 +1,4 @@
-package com.bquiet.bquiet.fragments;
+package com.bquiet.bquiet.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.bquiet.bquiet.MyClass;
 import com.bquiet.bquiet.R;
-import com.bquiet.bquiet.fragments.RowViewHolder;
+import com.bquiet.bquiet.views.RowViewHolder;
 
 import java.util.List;
 

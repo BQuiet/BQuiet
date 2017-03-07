@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.bquiet.bquiet.MyClass;
 import com.bquiet.bquiet.R;
+import com.bquiet.bquiet.adapters.MyClassListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.bquiet.bquiet.fragments;
+package com.bquiet.bquiet.views;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
