@@ -17,7 +17,7 @@
         android:id="@+id/cardview_class_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorTextCardView"
+        android:textColor="@color/colorTextLight"
         android:textStyle="bold"
         android:textSize="@dimen/cardview_class_text_size"
         android:layout_gravity="center"
