@@ -8,8 +8,11 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 
-import com.bquiet.bquiet.MiFragmentPagerAdapter;
+import com.bquiet.bquiet.adapters.MiFragmentPagerAdapter;
 import com.bquiet.bquiet.R;
+
+import io.realm.Realm;
+
 
 public class MainActivity extends FragmentActivity {
 
@@ -27,6 +30,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Realm.init(this);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new MiFragmentPagerAdapter(getSupportFragmentManager()));

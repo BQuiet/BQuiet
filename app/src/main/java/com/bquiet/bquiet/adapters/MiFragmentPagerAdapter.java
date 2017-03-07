@@ -13,7 +13,7 @@ import com.bquiet.bquiet.fragments.NoiseLevelFragment;
 public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private String tabTitles[] =
-            new String[] { "   Sonómetro   ", "   Niveles   ", "   About as   "};
+            new String[] { "   Sonómetro   ", "   Niveles   ", "   About us   "};
 
     public MiFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
