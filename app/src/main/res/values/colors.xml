@@ -11,7 +11,7 @@
     <color name="colorClickNumberPickerArrow">#c71336</color>
     <color name="colorClickNumberPickerText">#de234a</color>
 
-    <color name="colorTextCardView">#ffffff</color>
+    <color name="colorTextLight">#ffffff</color>
 
 </resources>
 

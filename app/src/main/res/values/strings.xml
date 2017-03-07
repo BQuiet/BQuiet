@@ -7,4 +7,7 @@
     <string name="state_high">Alto</string>
     <string name="fragment_noise_level_label_low_text">Límite inferior</string>
     <string name="fragment_noise_level_label_high_text">Límite superior</string>
+    <string name="fragment_login_user_text">Usuario</string>
+    <string name="fragment_login_password_text">Contraseña</string>
+    <string name="fragment_login_login_textButton">Acceder</string>
 </resources>
