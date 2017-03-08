@@ -2,6 +2,7 @@ package com.bquiet.bquiet.fragments;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -44,6 +45,10 @@ public class AboutFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Uri uri = Uri.parse("tel:" + "901082332");
+                Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+                startActivity(intent);
+
             }
         });
 
@@ -51,12 +56,22 @@ public class AboutFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                Uri data = Uri.parse("mailto:info@robonautas.com?subject" + "" + "&body=" + "");
+                intent.setData(data);
+                startActivity(intent);
+
             }
         });
 
         web_robonautas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Uri uri = Uri.parse("https://www.facebook.com/losrobonautas");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
 
             }
         });
@@ -73,13 +88,20 @@ public class AboutFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Uri uri = Uri.parse("https://github.com/BQuiet/BQuiet");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
             }
         });
 
 
         return view;
+    }
 
-
+    public static Fragment newInstance() {
+        AboutFragment myFragment = new AboutFragment();
+        return myFragment;
 
     }
 

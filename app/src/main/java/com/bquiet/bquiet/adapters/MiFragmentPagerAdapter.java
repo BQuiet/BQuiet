@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.bquiet.bquiet.fragments.GraphicsFragment;
-import com.bquiet.bquiet.fragments.SonometerFragment;
+import com.bquiet.bquiet.fragments.AboutFragment;
 import com.bquiet.bquiet.fragments.NoiseLevelFragment;
+import com.bquiet.bquiet.fragments.SonometerFragment;
 
 
 public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
@@ -36,10 +36,10 @@ public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
                 f = NoiseLevelFragment.newInstance();
                 break;
             case 2:
-
+                f = AboutFragment.newInstance();
                 break;
             case 3:
-                f = GraphicsFragment.newInstance();
+
                 break;
             case 4:
 
