@@ -10,4 +10,7 @@
     <string name="fragment_login_user_text">Usuario</string>
     <string name="fragment_login_password_text">Contraseña</string>
     <string name="fragment_login_login_textButton">Acceder</string>
+    <string name="fragment_login_logout_textButton">Logout</string>
+    <string name="fragment_login_send_textButton">Send</string>
+
 </resources>
