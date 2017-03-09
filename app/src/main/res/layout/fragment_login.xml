@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bquiet.bquiet.fragments.LoginFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linear_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/fragment_login_user"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:hint="@string/fragment_login_user_text"
+        android:layout_weight="3"/>
+
+    <EditText
+        android:id="@+id/fragment_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:hint="@string/fragment_login_password_text"
+        android:layout_weight="3"/>
+
+    <Button
+        android:id="@+id/fragment_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        android:textColor="@color/colorTextLight"
+        android:text="@string/fragment_login_login_textButton"
+        android:background="@drawable/login_button_background"
+        android:layout_weight="1"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+    <Button
+        android:id="@+id/fragment_login_send_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        android:textColor="@color/colorTextLight"
+        android:text="@string/fragment_login_send_textButton"
+        android:background="@drawable/login_button_background"
+        android:layout_weight="2"/>
+    <Button
+        android:id="@+id/fragment_login_logout_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        android:textColor="@color/colorTextLight"
+        android:text="@string/fragment_login_logout_textButton"
+        android:background="@drawable/login_button_background"
+        android:layout_weight="1"/>
+        </LinearLayout>
+
+</LinearLayout>

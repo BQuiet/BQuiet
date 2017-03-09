@@ -1,0 +1,125 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.bquiet.bquiet.fragments.SonometerFragment">
+
+    <RelativeLayout
+        android:id="@+id/fragment_relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/fragment_db_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="80dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            android:text="dB"
+            android:layout_alignParentRight="true"
+            />
+        <TextView
+            android:id="@+id/fragment_state_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal"
+            android:fontFamily="casual"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            android:layout_marginRight="90dp"
+            android:layout_below="@id/fragment_db_text_view"
+            android:layout_alignParentRight="true"
+
+            />
+        <ImageButton
+            android:id="@+id/fragment_play_button"
+            android:background="@drawable/button_play"
+            android:layout_width="@dimen/button_play_pause_size"
+            android:layout_height="@dimen/button_play_pause_size"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
+
+        <ImageButton
+            android:id="@+id/fragment_pause_button"
+            android:background="@drawable/button_pause"
+            android:layout_width="@dimen/button_play_pause_size"
+            android:layout_height="@dimen/button_play_pause_size"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:id="@+id/fragment_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ViewFlipper
+                android:id="@+id/scroll"
+                android:layout_width="300dp"
+                android:layout_height="300dp">
+            <com.github.anastr.speedviewlib.SpeedView
+
+                android:id="@+id/speedView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="30dp"
+                app:maxSpeed="100"
+                app:minSpeed="0"
+                app:speedTextFormat="INTEGER"
+                app:unit="dB"
+                app:endDegree="360"
+                app:startDegree="180" />
+            <com.github.anastr.speedviewlib.AwesomeSpeedometer
+                android:id="@+id/awesomeSpeedometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="30dp"
+                app:maxSpeed="100"
+                app:minSpeed="0"
+                app:speedTextFormat="INTEGER"
+                app:unit="dB"
+                app:endDegree="360"
+                app:startDegree="180"/>
+
+                <com.github.anastr.speedviewlib.TubeSpeedometer
+                    android:id="@+id/tubeSpeedometer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    app:maxSpeed="100"
+                    app:minSpeed="0"
+                    app:speedTextFormat="INTEGER"
+                    app:unit="dB"
+                    app:endDegree="360"
+                    app:startDegree="180"/>
+
+                <com.github.anastr.speedviewlib.DeluxeSpeedView
+                    android:id="@+id/deluxeSpeedView"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    app:maxSpeed="100"
+                    app:minSpeed="0"
+                    app:speedTextFormat="INTEGER"
+                    app:unit="dB"
+                    app:endDegree="360"
+                    app:startDegree="180"/>
+            </ViewFlipper>
+
+        </LinearLayout>
+
+
+
+
+
+</FrameLayout>

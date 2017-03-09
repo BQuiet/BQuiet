@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#de234a</color>
+    <color name="colorPrimaryDark">#c71336</color>
+    <color name="colorAccent">#b4dcf6</color>
+
+    <color name="colorLowNoise">#b2ff59</color>
+    <color name="colorMediumNoise">#ffd740</color>
+    <color name="colorHighNoise">#ff5252</color>
+
+    <color name="colorClickNumberPickerArrow">#c71336</color>
+    <color name="colorClickNumberPickerText">#de234a</color>
+
+    <color name="colorTextLight">#ffffff</color>
+
 </resources>
+

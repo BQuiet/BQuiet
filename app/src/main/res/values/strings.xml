@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Bquiet</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="low_state">Bajo</string>
+    <string name="normal_state">Normal</string>
+    <string name="state_high">Alto</string>
+    <string name="fragment_noise_level_label_low_text">Límite inferior</string>
+    <string name="fragment_noise_level_label_high_text">Límite superior</string>
+    <string name="fragment_login_user_text">Usuario</string>
+    <string name="fragment_login_password_text">Contraseña</string>
+    <string name="fragment_login_login_textButton">Acceder</string>
+    <string name="fragment_login_logout_textButton">Logout</string>
+    <string name="fragment_login_send_textButton">Send</string>
+
 </resources>
