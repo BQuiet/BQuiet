@@ -61,7 +61,7 @@
         <LinearLayout
             android:id="@+id/fragment_layout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <ViewFlipper
                 android:id="@+id/scroll"
@@ -71,7 +71,7 @@
 
                 android:id="@+id/speedView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:padding="30dp"
                 app:maxSpeed="100"
                 app:minSpeed="0"
@@ -94,7 +94,7 @@
                 <com.github.anastr.speedviewlib.TubeSpeedometer
                     android:id="@+id/tubeSpeedometer"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:padding="30dp"
                     app:maxSpeed="100"
                     app:minSpeed="0"
@@ -105,8 +105,8 @@
 
                 <com.github.anastr.speedviewlib.DeluxeSpeedView
                     android:id="@+id/deluxeSpeedView"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:padding="30dp"
                     app:maxSpeed="100"
                     app:minSpeed="0"
