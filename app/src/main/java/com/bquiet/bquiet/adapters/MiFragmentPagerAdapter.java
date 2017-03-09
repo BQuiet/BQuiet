@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.bquiet.bquiet.fragments.AboutFragment;
+import com.bquiet.bquiet.fragments.LoginFragment;
 import com.bquiet.bquiet.fragments.NoiseLevelFragment;
 import com.bquiet.bquiet.fragments.SonometerFragment;
 
@@ -12,7 +13,7 @@ import com.bquiet.bquiet.fragments.SonometerFragment;
 public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private String tabTitles[] =
-            new String[] { "   Sonómetro   ", "   Niveles   ", "   Equipo   "};
+            new String[] { "   Sonómetro   ", "   Niveles   ", "   Log/Send   ", "   Equipo   "};
 
     public MiFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -36,10 +37,10 @@ public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
                 f = NoiseLevelFragment.newInstance();
                 break;
             case 2:
-                f = AboutFragment.newInstance();
+                f = LoginFragment.newInstance();
                 break;
             case 3:
-
+                f = AboutFragment.newInstance();
                 break;
             case 4:
 
