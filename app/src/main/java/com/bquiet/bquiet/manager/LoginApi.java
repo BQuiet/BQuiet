@@ -67,7 +67,7 @@ public class LoginApi {
 
         if (listener!=null){
             String token = loginResponse.getToken();
-            listener.responseConsultUser(true, token);
+            listener.responseConsultUser(true, "asdasda");
         }
 
 
