@@ -3,6 +3,7 @@ package com.bquiet.bquiet.fragments;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class NoiseLevelFragment extends Fragment {
         lowClickNumberPickerView = (ClickNumberPickerView) view.findViewById(R.id.fragment_noise_level_low_picker);
         highClickNumberPickerView = (ClickNumberPickerView) view.findViewById(R.id.fragment_noise_level_high_picker);
 
-        SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         int lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
         int mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
 
@@ -51,7 +52,6 @@ public class NoiseLevelFragment extends Fragment {
             public void onValueChange(float previousValue, float currentValue, PickerClickType pickerClickType) {
                 speedometer.setLowSpeedPercent((int) currentValue);
 
-                SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putInt("lowMargin", (int) currentValue);
                 editor.commit();
@@ -63,7 +63,6 @@ public class NoiseLevelFragment extends Fragment {
             public void onValueChange(float previousValue, float currentValue, PickerClickType pickerClickType) {
                 speedometer.setMediumSpeedPercent((int) currentValue);
 
-                SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putInt("mediumMargin", (int) currentValue);
                 editor.commit();

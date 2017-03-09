@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -135,9 +136,11 @@ public class SonometerFragment extends Fragment {
     }
 
     private void configureSpeedometers() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("preferences", 0);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
         mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
+
+        Log.d("", "low" + lowMargin + " medium " + mediumMargin);
 
         final Speedometer[] speedometers = {
                 speedometer,
@@ -201,6 +204,7 @@ public class SonometerFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+
         configureSpeedometers();
 
         if (playing) {
