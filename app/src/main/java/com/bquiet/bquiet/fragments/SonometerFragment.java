@@ -20,21 +20,20 @@ import android.widget.ViewAnimator;
 
 import com.bquiet.bquiet.R;
 import com.bquiet.bquiet.manager.RecorderManager;
-//import com.bquiet.bquiet.model.Dates;
-//import com.bquiet.bquiet.model.NoiseList;
 import com.bquiet.bquiet.model.Constants;
 import com.bquiet.bquiet.model.KeepRealm;
-import com.github.anastr.speedviewlib.PointerSpeedometer;
 import com.github.anastr.speedviewlib.Speedometer;
 
 import java.util.Date;
 
-//import io.realm.Realm;
-//import io.realm.RealmResults;
-
 import io.realm.Realm;
 
 import static android.view.View.GONE;
+
+//import com.bquiet.bquiet.model.Dates;
+//import com.bquiet.bquiet.model.NoiseList;
+//import io.realm.Realm;
+//import io.realm.RealmResults;
 
 public class SonometerFragment extends Fragment {
 
@@ -65,6 +64,7 @@ public class SonometerFragment extends Fragment {
     RecorderManager.Ear ear;
     MediaPlayer mp;
     private boolean playing;
+    private static SonometerFragment sonometerFragment;
 
     public SonometerFragment() {
     }
@@ -202,9 +202,7 @@ public class SonometerFragment extends Fragment {
         pauseButton.setVisibility(GONE);
     }
 
-
-    @Override
-    public void onResume() {
+    public void refresh() {
         super.onResume();
 
         configureSpeedometers();
@@ -291,9 +289,11 @@ public class SonometerFragment extends Fragment {
             mp = null;
         }
     }
-    public static Fragment newInstance() {
-        SonometerFragment myFragment = new SonometerFragment();
-        return myFragment;
+    public synchronized static Fragment newInstance() {
+        if (sonometerFragment == null) {
+            sonometerFragment = new SonometerFragment();
+        }
+        return sonometerFragment;
 
     }
 

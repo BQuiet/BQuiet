@@ -15,7 +15,7 @@ import com.bquiet.bquiet.R;
 public class AboutFragment extends Fragment {
 
 
-
+    private static AboutFragment myFragment;
 
     public AboutFragment() {
         // Required empty public constructor
@@ -35,8 +35,10 @@ public class AboutFragment extends Fragment {
         return view;
     }
 
-    public static Fragment newInstance() {
-        AboutFragment myFragment = new AboutFragment();
+    public synchronized static Fragment newInstance() {
+        if (myFragment == null) {
+            myFragment = new AboutFragment();
+        }
         return myFragment;
 
     }

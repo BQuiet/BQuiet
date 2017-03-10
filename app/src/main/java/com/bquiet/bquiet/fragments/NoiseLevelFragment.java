@@ -26,6 +26,7 @@ public class NoiseLevelFragment extends Fragment {
     ClickNumberPickerView highClickNumberPickerView;
     private int lowMargin;
     private int mediumMargin;
+    private static NoiseLevelFragment myFragment;
 
 
     public NoiseLevelFragment() {
@@ -88,8 +89,10 @@ public class NoiseLevelFragment extends Fragment {
         return view;
 
     }
-    public static Fragment newInstance() {
-        NoiseLevelFragment myFragment = new NoiseLevelFragment();
+    public synchronized static Fragment newInstance() {
+        if (myFragment == null) {
+            myFragment = new NoiseLevelFragment();
+        }
         return myFragment;
 
     }

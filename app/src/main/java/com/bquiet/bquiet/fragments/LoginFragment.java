@@ -24,6 +24,7 @@ public class LoginFragment extends Fragment {
     private Button logOutButton;
     private LinearLayout loginLinear;
     private LinearLayout logoutLinear;
+    private static LoginFragment myFragment;
 
     public LoginFragment() {
     }
@@ -95,8 +96,10 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
-    public static Fragment newInstance() {
-        LoginFragment myFragment = new LoginFragment();
+    public synchronized static Fragment newInstance() {
+        if (myFragment == null) {
+            myFragment = new LoginFragment();
+        }
         return myFragment;
 
     }
