@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,9 @@ public class NoiseLevelFragment extends Fragment {
 
     ClickNumberPickerView lowClickNumberPickerView;
     ClickNumberPickerView highClickNumberPickerView;
+    private int lowMargin;
+    private int mediumMargin;
+
 
     public NoiseLevelFragment() {
     }
@@ -38,8 +42,8 @@ public class NoiseLevelFragment extends Fragment {
         highClickNumberPickerView = (ClickNumberPickerView) view.findViewById(R.id.fragment_noise_level_high_picker);
 
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        int lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
-        int mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
+        lowMargin = preferences.getInt("lowMargin", Constants.DEFAULT_LOW_LABEL_SPEEDOMETRE);
+        mediumMargin = preferences.getInt("mediumMargin", Constants.DEFAULT_MEDIUM_LABEL_SPEEDOMETRE);
 
         lowClickNumberPickerView.setPickerValue(lowMargin);
         highClickNumberPickerView.setPickerValue(mediumMargin);
@@ -50,22 +54,34 @@ public class NoiseLevelFragment extends Fragment {
         lowClickNumberPickerView.setClickNumberPickerListener(new ClickNumberPickerListener() {
             @Override
             public void onValueChange(float previousValue, float currentValue, PickerClickType pickerClickType) {
-                speedometer.setLowSpeedPercent((int) currentValue);
+                if(currentValue < mediumMargin) {
+                    lowMargin = (int) currentValue;
+                    speedometer.setLowSpeedPercent((int) currentValue);
 
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("lowMargin", (int) currentValue);
-                editor.commit();
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putInt("lowMargin", (int) currentValue);
+                    editor.commit();
+                } else {
+                    Log.d("error", "" + mediumMargin + " " + lowClickNumberPickerView.getValue());
+                    lowClickNumberPickerView.setPickerValue(mediumMargin -1);
+                }
+                lowClickNumberPickerView.recomputeViewAttributes(lowClickNumberPickerView);
             }
         });
 
         highClickNumberPickerView.setClickNumberPickerListener(new ClickNumberPickerListener() {
             @Override
             public void onValueChange(float previousValue, float currentValue, PickerClickType pickerClickType) {
-                speedometer.setMediumSpeedPercent((int) currentValue);
+                if(currentValue > lowMargin) {
+                    mediumMargin = (int) currentValue;
+                    speedometer.setMediumSpeedPercent((int) currentValue);
 
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("mediumMargin", (int) currentValue);
-                editor.commit();
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putInt("mediumMargin", (int) currentValue);
+                    editor.commit();
+                } else {
+                    highClickNumberPickerView.setPickerValue(lowMargin + 1);
+                }
             }
         });
 

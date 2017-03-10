@@ -27,7 +27,7 @@ public class MiFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        Fragment f = (SonometerFragment) SonometerFragment.newInstance();
+        Fragment f  = null; // = (SonometerFragment) SonometerFragment.newInstance();
 
         switch(position) {
             case 0:

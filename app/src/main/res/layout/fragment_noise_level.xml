@@ -27,7 +27,10 @@
             app:swipe_enabled="false"
             app:value_background_color="@color/colorClickNumberPickerArrow"
             app:value_text_color="@android:color/white"
-            android:layout_margin="@dimen/fragment_noise_level_grid_margin"/>
+            android:layout_margin="@dimen/fragment_noise_level_grid_margin"
+
+
+            />
 
         <TextView
             android:id="@+id/fragment_noise_level_label_high_text"

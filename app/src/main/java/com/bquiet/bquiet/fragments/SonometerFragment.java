@@ -24,6 +24,7 @@ import com.bquiet.bquiet.manager.RecorderManager;
 //import com.bquiet.bquiet.model.NoiseList;
 import com.bquiet.bquiet.model.Constants;
 import com.bquiet.bquiet.model.KeepRealm;
+import com.github.anastr.speedviewlib.PointerSpeedometer;
 import com.github.anastr.speedviewlib.Speedometer;
 
 import java.util.Date;
@@ -32,7 +33,6 @@ import java.util.Date;
 //import io.realm.RealmResults;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 
 import static android.view.View.GONE;
 
@@ -78,7 +78,7 @@ public class SonometerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_main, container, false);
+        View v = inflater.inflate(R.layout.fragment_sonometer, container, false);
 
         speedometer = (Speedometer) v.findViewById(R.id.speedView);
         speedometer2 = (Speedometer) v.findViewById(R.id.awesomeSpeedometer);
@@ -153,6 +153,7 @@ public class SonometerFragment extends Fragment {
             sp.setLowSpeedPercent(lowMargin);
             sp.setMediumSpeedPercent(mediumMargin);
             sp.setWithTremble(speedometreWithTremble);
+
         }
     }
 
@@ -201,9 +202,10 @@ public class SonometerFragment extends Fragment {
         pauseButton.setVisibility(GONE);
     }
 
+
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onResume() {
+        super.onResume();
 
         configureSpeedometers();
 
@@ -214,6 +216,13 @@ public class SonometerFragment extends Fragment {
                 pauseSonometer();
             }
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+
     }
 
     private void changeBackgroundImage(float noiseLevel) {
