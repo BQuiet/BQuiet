@@ -8,8 +8,9 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 
-import com.bquiet.bquiet.adapters.MiFragmentPagerAdapter;
 import com.bquiet.bquiet.R;
+import com.bquiet.bquiet.adapters.MiFragmentPagerAdapter;
+import com.bquiet.bquiet.fragments.SonometerFragment;
 
 import io.realm.Realm;
 
@@ -17,6 +18,7 @@ import io.realm.Realm;
 public class MainActivity extends FragmentActivity {
 
     private FragmentTabHost mTabHost;
+    private SonometerFragment sonometerFragment;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -32,35 +34,32 @@ public class MainActivity extends FragmentActivity {
 
         Realm.init(this);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new MiFragmentPagerAdapter(getSupportFragmentManager()));
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        final MiFragmentPagerAdapter adapter = new MiFragmentPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.appbartabs);
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.appbartabs);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setupWithViewPager(viewPager);
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        /*mTabHost = (FragmentTabHost) findViewById(R.id.activity_main_tabhost);
-        mTabHost.setup(this, getSupportFragmentManager(), R.id.activity_main__tabcontent);
+            }
 
-        mTabHost.addTab(
-                mTabHost.newTabSpec("Sonómetro").setIndicator("Sonómetro", null),
-                SonometerFragment.class, null);
-        mTabHost.addTab(
-                mTabHost.newTabSpec("Mi clase").setIndicator("Mi clase", null),
-                MyClassFragment.class, null);
-        mTabHost.addTab(
-                mTabHost.newTabSpec("Niveles").setIndicator("Niveles", null),
-                NoiseLevelFragment.class, null);
-        mTabHost.addTab(
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0) {
+                    sonometerFragment = (SonometerFragment) adapter.getItem(0);
+                    sonometerFragment.refresh();
+                }
+            }
 
-                mTabHost.newTabSpec("Estadísticas").setIndicator("Estadísticas", null),
-                GraphicsFragment.class, null);
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-                mTabHost.newTabSpec("Graphics").setIndicator("Graphics", null),
-                GraphicsFragment.class, null);*/
-
-
+            }
+        });
     }
-
 }
