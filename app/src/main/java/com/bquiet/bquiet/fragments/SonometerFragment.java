@@ -91,7 +91,6 @@ public class SonometerFragment extends Fragment {
         dB = (TextView) v.findViewById(R.id.fragment_db_text_view);
         scrollView = (ViewAnimator) v.findViewById(R.id.scroll);
 
-
         configureSpeedometers();
 
         scrollView.setOnClickListener(new View.OnClickListener() {
@@ -234,8 +233,9 @@ public class SonometerFragment extends Fragment {
             state.setText(R.string.low_state);
 
 
-            final KeepRealm keepRealm = new KeepRealm(new Date(), noiseLevel);
-            saveToRealm(keepRealm);
+            final KeepRealm keepRealm = new KeepRealm(new Date().getTime(), noiseLevel);
+            //saveToRealm(keepRealm);
+
 
         } else if (noiseLevel > lowMargin && noiseLevel < mediumMargin) {
             layout.setBackgroundResource(R.color.colorMediumNoise);
@@ -243,14 +243,14 @@ public class SonometerFragment extends Fragment {
             started = false;
             state.setText(R.string.normal_state);
 
-            final KeepRealm keepRealm = new KeepRealm(new Date(), noiseLevel);
+            final KeepRealm keepRealm = new KeepRealm(new Date().getTime(), noiseLevel);
             saveToRealm(keepRealm);
 
         } else if (noiseLevel > mediumMargin) {
             layout.setBackgroundResource(R.color.colorHighNoise);
             state.setText(R.string.state_high);
 
-            final KeepRealm keepRealm = new KeepRealm(new Date(), noiseLevel);
+            final KeepRealm keepRealm = new KeepRealm(new Date().getTime(), noiseLevel);
             saveToRealm(keepRealm);
 
             if (!started) {

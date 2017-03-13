@@ -52,6 +52,7 @@ public class NoiseLevelFragment extends Fragment {
         speedometer.setLowSpeedPercent(lowMargin);
         speedometer.setMediumSpeedPercent(mediumMargin);
 
+
         lowClickNumberPickerView.setClickNumberPickerListener(new ClickNumberPickerListener() {
             @Override
             public void onValueChange(float previousValue, float currentValue, PickerClickType pickerClickType) {
