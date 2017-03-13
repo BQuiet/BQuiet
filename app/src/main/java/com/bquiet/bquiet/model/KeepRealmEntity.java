@@ -1,16 +1,14 @@
 package com.bquiet.bquiet.model;
 
 
-import io.realm.RealmObject;
-
-public class KeepRealm extends RealmObject {
+public class KeepRealmEntity  {
     private long date;
     private float spl;
 
-    public KeepRealm() {
+    public KeepRealmEntity() {
     }
 
-    public KeepRealm(long date, float spl) {
+    public KeepRealmEntity(long date, float spl) {
         this.date = date;
         this.spl = spl;
     }
@@ -31,5 +29,9 @@ public class KeepRealm extends RealmObject {
         this.date = date;
     }
 
+    public static KeepRealmEntity map(KeepRealm kr) {
+        KeepRealmEntity kre = new KeepRealmEntity(kr.getDate(), kr.getSpl());
+        return kre;
+    }
 
 }
